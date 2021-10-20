@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Article Details should render ArticleDetails 1`] = `
+<div>
+  <div
+    class="makeStyles-content-1"
+  >
+    <div
+      class="makeStyles-description-2"
+    >
+      <div
+        class="MuiContainer-root makeStyles-root-8 MuiContainer-maxWidthLg"
+      >
+        <div
+          class="LinesEllipsis  "
+        >
+          Coke   500gm
+          <wbr />
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiContainer-root makeStyles-root-8 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="makeStyles-details-3"
+      >
+        <div
+          class="makeStyles-articleId-4"
+        >
+          AF1247
+        </div>
+        <div
+          class="makeStyles-amountDetails-5"
+        >
+          <span />
+        </div>
+        <div
+          class="makeStyles-imageButtonWrapper-6"
+        >
+          <button
+            aria-label="article"
+            class="MuiButtonBase-root MuiIconButton-root makeStyles-imageButton-7"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,363 @@
+{
+  "id": "40447834",
+  "branchNo": 1759,
+  "trolleyType": "normal",
+  "pickingDone": false,
+  "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+  "trolleyStatus": 1,
+  "goalTime": 30000,
+  "elapsedTime": 0,
+  "bonusTime": 100,
+  "isBulk": false,
+  "totes": [
+    {
+      "id": "1",
+      "orderNo": "140031688",
+      "position": 1,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031688002"
+    },
+    {
+      "id": "2",
+      "orderNo": "140031689",
+      "position": 2,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031688003"
+    },
+    {
+      "id": "3",
+      "orderNo": "1400316",
+      "position": 3,
+      "pickingZoneId": 5,
+      "pickingZoneName": "Fresh",
+      "barcode": "140031688003"
+    },
+    {
+      "id": "4",
+      "orderNo": "140031681",
+      "position": 4,
+      "pickingZoneId": 4,
+      "pickingZoneName": "Security",
+      "barcode": "140031688004"
+    },
+    {
+      "id": 5,
+      "orderNo": "140031688",
+      "position": 5,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031688009"
+    }
+  ],
+  "orders": [
+    {
+      "id": "140031681",
+      "packagingType": "NO BAGS",
+      "deliveryMethod": "DELIVERY",
+      "locationCode": 5,
+      "deliveryDate": "2021-09-10T16:00:00",
+      "transitCode": "TRAN-CODE-2342364537457",
+      "customerName": "Cusotmer nameasd asd"
+    },
+    {
+      "id": "140031689",
+      "packagingType": "PAPER BAG",
+      "deliveryMethod": "DELIVERY",
+      "locationCode": 3,
+      "customerName": "Cusotmer nameasd asd",
+      "deliveryDate": "2021-09-13T16:00:00"
+    },
+    {
+      "id": "1400316",
+      "packagingType": "NO BAGS",
+      "deliveryMethod": "DELIVERY",
+      "deliveryDate": "2021-06-10T16:00:00",
+      "transitCode": "TRAN-CODE-435345",
+      "customerName": "Cusotmer name"
+    },
+    {
+      "id": "140031688",
+      "packagingType": "ONLINE BAG",
+      "deliveryMethod": "DELIVERY",
+      "locationCode": 5,
+      "deliveryDate": "2021-09-10T16:00:00",
+      "transitCode": "TRAN-CODE-1",
+      "customerName": "Suman Palikhe"
+    }
+  ],
+  "toteItems": [
+    {
+      "id": "112445",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "1",
+      "itemIndex": 11,
+      "orderNo": "140031688",
+      "articleId": "112445",
+      "aisle": "19",
+      "bay": "6",
+      "shelf": "12",
+      "orderedQuantity": 1,
+      "currentPage": 0,
+      "totalPages": null,
+      "volumeSize": "MIN. 500g",
+      "eachMultiplier": 0.5,
+      "useWeightRange": true,
+      "minWeight": 0.5,
+      "maxWeight": 0.5,
+      "pricingUnit": "EACH",
+      "price": 4.0,
+      "secondaryArticleId": "777944",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    },
+    {
+      "id": "586822",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "4",
+      "itemIndex": 0,
+      "orderNo": "140031681",
+      "articleId": "586822",
+      "secondaryArticleId": "124577",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 1,
+      "currentPage": 1,
+      "totalPages": 1,
+      "pricingUnit": "EACH",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "stockOnHand": 6,
+      "suppliedDetails": []
+    },
+    {
+      "id": "100261",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "1",
+      "itemIndex": 0,
+      "orderNo": "140031688",
+      "articleId": "777944",
+      "aisle": "2",
+      "bay": "2",
+      "shelf": "2",
+      "orderedQuantity": 30,
+      "useWeightRange": false,
+      "pricingUnit": "KG",
+      "currentPage": 1,
+      "totalPages": 2,
+
+      "price": 4.0,
+      "secondaryArticleId": "321141",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    },
+    {
+      "id": "28392",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": 5,
+      "itemIndex": 0,
+      "orderNo": "140031688",
+      "articleId": "561890",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 3,
+      "useWeightRange": false,
+      "pricingUnit": "EACH",
+      "currentPage": 5,
+      "totalPages": 25,
+
+      "price": 4.0,
+      "secondaryArticleId": "100261",
+      "suppliedDetails": [
+        {
+          "type": "Primary",
+          "articleId": "28391",
+          "scanDetails": [
+            {
+              "barcode": "",
+              "suppliedPrice": 0,
+              "quantity": 2,
+              "weight": null,
+              "batchNo": "",
+              "expiryDate": "",
+              "dataBar": ""
+            }
+          ]
+        }
+      ],
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had."
+    },
+    {
+      "id": "443314",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "2",
+      "itemIndex": 1,
+      "orderNo": "140031689",
+      "articleId": "443314",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 50,
+      "currentPage": 10,
+      "totalPages": 20,
+
+      "price": 3.5,
+      "useWeightRange": false,
+      "pricingUnit": "EACH",
+      "secondaryArticleId": "100261",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As this is my favourite product.",
+      "suppliedDetails": [
+        {
+          "type": "SilentSub",
+          "articleId": "100261",
+          "scanDetails": [
+            {
+              "barcode": "",
+              "suppliedPrice": 0,
+              "quantity": 6,
+              "weight": null,
+              "batchNo": "",
+              "expiryDate": "",
+              "dataBar": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "561890",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "4",
+      "itemIndex": 0,
+      "orderNo": "140031681",
+      "articleId": "561890",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 30,
+      "currentPage": 5,
+      "totalPages": 20,
+
+      "price": 4.0,
+      "useWeightRange": false,
+      "pricingUnit": "EACH",
+      "secondaryArticleId": "124577",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    },
+    {
+      "id": "112533",
+      "toteId": "1",
+      "itemIndex": 0,
+      "orderNo": "140031688",
+      "articleId": "112533",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 1,
+      "currentPage": 5,
+      "totalPages": 20,
+
+      "price": 4.0,
+      "secondaryArticleId": "124577",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    },
+    {
+      "id": "381344",
+      "toteId": "4",
+      "itemIndex": 0,
+      "orderNo": "140031681",
+      "articleId": "381344",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 1,
+      "currentPage": 5,
+      "totalPages": 20,
+
+      "price": 4.0,
+      "secondaryArticleId": "124577",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    },
+    {
+      "id": "626523",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "4",
+      "itemIndex": 0,
+      "orderNo": "140031681",
+      "articleId": "626523",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 1,
+      "currentPage": 5,
+      "totalPages": 20,
+
+      "price": 4.0,
+      "secondaryArticleId": "124577",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    },
+    {
+      "id": "321141",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "4",
+      "itemIndex": 0,
+      "orderNo": "140031681",
+      "articleId": "321141",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 1,
+      "currentPage": 5,
+      "totalPages": 20,
+
+      "price": 4.0,
+      "secondaryArticleId": "124577",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    }
+  ],
+  "collectibles": [
+    {
+      "id": "561890",
+      "itemIndex": 1,
+      "orderNo": "140031681",
+      "articleId": "561890",
+      "toteId": "4",
+      "orderedQuantity": 12,
+
+      "suppliedQuantity": 0
+    },
+    {
+      "id": "443314",
+      "itemIndex": 1,
+      "orderNo": "140031681",
+      "articleId": "443314",
+      "toteId": "4",
+      "orderedQuantity": 2,
+
+      "suppliedQuantity": 0
+    }
+  ],
+  "freeSamples": [
+    {
+      "id": "123456",
+      "description": "Welcome Pack Sampling 2 *While Stocks Last",
+      "suppliedQuantity": 0,
+      "orderNo": "140031688",
+      "toteId": "1"
+    },
+    {
+      "id": "123457",
+      "description": "Welcome Pack ",
+      "suppliedQuantity": 0,
+      "orderNo": "140031688",
+      "toteId": "1"
+    }
+  ]
+}

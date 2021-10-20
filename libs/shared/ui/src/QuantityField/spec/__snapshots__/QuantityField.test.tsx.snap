@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders QuantityField 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-1 MuiFormControl-fullWidth"
+  >
+    <label
+      class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-focused Mui-focused"
+      data-shrink="true"
+      for="suppliedQuantity"
+      id="suppliedQuantity-label"
+    >
+      Enter the supplied quantity
+    </label>
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl"
+    >
+      <input
+        aria-invalid="false"
+        autocomplete="off"
+        class="MuiInputBase-input MuiOutlinedInput-input"
+        id="suppliedQuantity"
+        inputmode="numeric"
+        name="suppliedQuantity"
+        pattern="[0-9]*"
+        type="text"
+        value="10"
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          class="PrivateNotchedOutline-legendLabelled-4 PrivateNotchedOutline-legendNotched-5"
+        >
+          <span>
+            Enter the supplied quantity
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+</div>
+`;

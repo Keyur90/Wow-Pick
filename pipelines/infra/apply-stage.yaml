@@ -1,0 +1,56 @@
+parameters:
+  - name: envName
+    type: string
+  - name: region
+    type: string
+  - name: appName
+    type: string
+  - name: artifact
+    type: string
+  - name: terraformVersion
+    type: string
+  - name: dependsOn
+    type: object
+    default: []
+
+stages:
+  - stage: Apply_${{ parameters.envName }}_${{ parameters.region}}
+    dependsOn: ${{ parameters.dependsOn }}
+    condition: succeeded()
+    jobs:
+      - deployment: Apply_${{ parameters.envName }}_${{ parameters.region}}
+        displayName: Apply ${{ parameters.envName }} ${{ parameters.region}}
+        timeoutInMinutes: 180
+        environment: ${{ parameters.appName }}-infra-${{ parameters.envName }}-${{ parameters.region }}
+        workspace:
+          clean: all
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: ${{ parameters.artifact }}
+
+                - task: TerraformInstaller@0
+                  displayName: Install terraform
+                  inputs:
+                    terraformVersion: ${{ parameters.terraformVersion }}
+
+                - template: terraform-init.yaml
+                  parameters:
+                    envName: ${{ parameters.envName }}
+                    region: ${{ parameters.region }}
+                    appName: ${{ parameters.appName}}
+                    artifact: ${{ parameters.artifact }}
+
+                - bash: |
+                    chmod -R 755 '$(Agent.BuildDirectory)/${{ parameters.artifact }}'
+                  displayName: Fix file permissions
+
+                - template: terraform-plan-or-apply.yaml
+                  parameters:
+                    action: apply
+                    envName: ${{ parameters.envName }}
+                    region: ${{ parameters.region }}
+                    appName: $(appName)
+                    artifact: ${{ parameters.artifact }}

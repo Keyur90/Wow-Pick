@@ -1,0 +1,37 @@
+# This file is used by:
+# 1. autoprefixer to adjust CSS to support the below specified browsers
+#    Material UI does NOT use browserslist but out of the box uses jss-plugin-vendor-prefixer that add vednor prefixes
+#    See this for details: 
+#      https://material-ui.com/styles/advanced/#jss-plugins
+#      https://github.com/cssinjs/jss/issues/279
+# 3. babel preset-env to adjust included polyfills
+# 4. Webpack to adjust it's runtime generated code to the specified browsers (has to set webpack target="browserslist")
+#
+# For additional information regarding the format and rule options, please see:
+# https://github.com/browserslist/browserslist#queries
+# Also you can visit this site to enter to see the result of browser list queries (for example write 'last 100 versions' and 
+#    see the result)  >>  https://browserslist.dev/
+# you can also open your terminal on the current directoy and run 
+#  npx browserslist --env="production" --config="apps/picking/.browserslistrc"
+
+[development]
+last 2 chrome version
+last 2 firefox version
+last 2 edge major versions
+
+[production]
+last 2 chrome version       # Enable this for wooliesX team member who need to test the app throgh desktop chrome browser
+last 2 firefox version      # Enable this for wooliesX team member who need to test the app throgh desktop firefox browser
+last 2 edge major versions  # Enable this for wooliesX team member who need to test the app throgh desktop edge browser
+android 4.4.3-4.4.4         # This is the web view version comes with android OS Android 4.4.3-4.4.4 (KitKat) that is still used by some RF devices
+android 4.4                 # This is the web view version comes with android OS Android 4.4 (KitKat) that is still used by some RF devices
+#android 89                  # This is the web view version comes with android OS 5.0 (Lollipop) or greater
+
+#last 100 android versions
+
+# See these links for android web view versions and RF devices
+# 1. Web view versions per android OS: https://developer.chrome.com/docs/multidevice/webview/overview/
+# 2. RF Device android os version: https://docs.google.com/presentation/d/17FuYgNwvmLXKmwbeN1pM2lm-tvXkdM_U2lBQ18hKVuA/edit#slide=id.g6b1c05abb0_0_0
+# 3. Android OS version number and it's name: https://en.wikipedia.org/wiki/Android_version_history
+
+

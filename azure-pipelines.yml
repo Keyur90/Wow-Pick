@@ -1,0 +1,143 @@
+name: $(date:yyyy.MM.dd)$(rev:.r)
+
+trigger:
+  batch: false
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - apps/picking-api/*
+      - pipelines/api/*
+      - azure-pipelines-wowpick-api.yml
+      - .vscode/*
+      - infra/*
+      - pipelines/infra/*
+      - azure-pipelines-wowpick-infra.yml
+
+# azure git repos, pr triggers can be only configured at branch policies build triggers, you can see it in the below link, 'UI Pipeline'
+# https://dev.azure.com/wowonline/ECF/_settings/repositories?repo=96a77e04-5756-4e41-b880-eedda8437008&_a=policiesMid&refs=refs/heads/master
+# It has this path condition: /*; !/apps/picking-api/*; !/pipelines/api/*; !/azure-pipelines-wowpick-api.yml; !/.vscode/*
+
+pool: wlx-ubuntu1804
+
+variables:
+  shouldTriggerDeployment: ${{ eq(variables['Build.SourceBranchName'], 'master') }} # true #
+  #shouldTriggerDeployment: ${{ or(eq(variables['Build.SourceBranchName'], 'main'), startsWith(variables['Build.SourceBranchName'], 'release/')) }}
+  nodeVersion: 14.x
+  appName: wowpick-ui
+  buildArtifactPrefix: ui-build
+  CYPRESS_CACHE_FOLDER: $(Pipeline.Workspace)/.cache/Cypress # https://docs.cypress.io/guides/getting-started/installing-cypress#Binary-cache
+
+stages:
+  - stage: BuildAndTest
+    displayName: Build and Test
+    jobs:
+      - job: BuildAndTest
+        displayName: Build and Test
+        steps:
+          - task: NodeTool@0
+            displayName: Install Node ${{ variables.nodeVersion }}
+            inputs:
+              versionSpec: ${{ variables.nodeVersion }}
+              checkLatest: true
+          - task: Cache@2
+            inputs:
+              key: npm-packages | $(Agent.OS) | yarn.lock
+              path: node_modules
+              cacheHitVar: nodeModulesRestored
+            displayName: Restore NPM Packages
+          - task: Cache@2
+            inputs:
+              key: cypress | $(Agent.OS) | yarn.lock
+              path: $(CYPRESS_CACHE_FOLDER)
+              cacheHitVar: cypressBinariesRestored
+            displayName: Restore Cypress Binaries
+          - script: yarn install --frozen-lockfile
+            displayName: Install Packages
+            condition: or(eq(variables.nodeModulesRestored, 'false'), eq(variables.cypressBinariesRestored, 'false'))
+          - script: yarn ci:ui-lint
+            displayName: Test (Lint)
+          - script: yarn ci:ui-test
+            displayName: Test (Unit Test)
+          - script: yarn ci:ui-e2e
+            displayName: Test (E2E)
+          - task: PublishCucumberReport@1
+            displayName: 'Publish Cucumber Report'
+            condition: always()
+            inputs:
+              jsonDir: $(System.DefaultWorkingDirectory)/dist/cypress/apps
+              outputPath: $(System.DefaultWorkingDirectory)/dist/cypress/apps
+              name: 'Functional Tests'
+              title: WOWPICK UI E2E
+          - ${{ if eq(variables.shouldTriggerDeployment, true) }}:
+              # DEV AAS
+              - script: PUBLIC_PATH_BASE_URL=https://rfweb-dev0.ecfk8saas.dev.wx-d.net yarn ci:ui-build --configuration=devaas
+                displayName: Build DEV AAS
+              - publish: dist/apps
+                artifact: $(buildArtifactPrefix)-devaas
+              # UAT AAE
+              - script: PUBLIC_PATH_BASE_URL=https://wowpickinguatstoaae.z8.web.core.windows.net yarn ci:ui-build --configuration=uataae
+                displayName: Build UAT AAE
+              - publish: dist/apps
+                artifact: $(buildArtifactPrefix)-uataae
+              # # PT AAE
+              # - script: PUBLIC_PATH_BASE_URL=PT_RF_LEGACY_URL_TO_BE_ADDED yarn ci:ui-build --configuration=ptaae
+              #   displayName: Build PT AAE
+              # - publish: dist/apps
+              #   artifact: $(buildArtifactPrefix)-ptaae
+              # # PROD AAE
+              # - script: PUBLIC_PATH_BASE_URL=https://PROD_AAE_RF_LEGACY_URL_TO_BE_ADDED yarn ci:ui-build --configuration=prodaae
+              #   displayName: Build PROD AAE
+              # - publish: dist/apps
+              #   artifact: $(buildArtifactPrefix)-prodaae
+              # # PROD AAS
+              # - script: PUBLIC_PATH_BASE_URL=https://PROD_AAS_RF_LEGACY_URL_TO_BE_ADDED yarn ci:ui-build --configuration=prodaas
+              #   displayName: Build PROD AAS
+              # - publish: dist/apps
+              #   artifact: $(buildArtifactPrefix)-prodaas
+          - script: rm -r node_modules/.cache
+            displayName: Remove Temp Cache
+          # - script: env | sort
+          #   displayName: Print Variables
+
+  - ${{ if eq(variables.shouldTriggerDeployment, true) }}:
+      - template: ./pipelines/ui/deploy-to-blob.yml
+        parameters:
+          envName: dev
+          region: aas
+          artifact: $(buildArtifactPrefix)-devaas
+          storageAccountName: wowwowpickdev0stoaas
+          dependsOn: BuildAndTest
+
+      - template: ./pipelines/ui/deploy-to-blob.yml
+        parameters:
+          envName: uat
+          region: aae
+          artifact: $(buildArtifactPrefix)-uataae
+          storageAccountName: wowpickinguatstoaae
+          dependsOn: Deploy_DEV_AAS
+
+      # - template: ./pipelines/ui/deploy-to-blob.yml
+      #   parameters:
+      #     envName: pt
+      #     region: aae
+      #     artifact: $(buildArtifactPrefix)-ptaae
+      #     storageAccountName: TO_BE_ADDED
+      #     dependsOn: Deploy_DEV_AAS
+
+      # - template: ./pipelines/ui/deploy-to-blob.yml
+      #   parameters:
+      #     envName: prod
+      #     region: aae
+      #     artifact: $(buildArtifactPrefix)-prodaae
+      #     storageAccountName: TO_BE_ADDED
+      #     dependsOn: Deploy_DEV_AAS
+
+      # - template: ./pipelines/ui/deploy-to-blob.yml
+      #   parameters:
+      #     envName: prod
+      #     region: aas
+      #     artifact: $(buildArtifactPrefix)-prodaas
+      #     storageAccountName: TO_BE_ADDED
+      #     dependsOn: Deploy_DEV_AAS

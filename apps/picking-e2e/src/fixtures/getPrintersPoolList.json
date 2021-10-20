@@ -1,0 +1,8 @@
+{
+  "data": {
+    "getPrintersPoolList": {
+      "printerPools": [{ "id": "1759-138", "name": "E3 Test Lab", "__typename": "PrinterPool" }],
+      "__typename": "PrintersPoolList"
+    }
+  }
+}

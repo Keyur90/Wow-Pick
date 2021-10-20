@@ -1,0 +1,127 @@
+name: $(date:yyyy.MM.dd)$(rev:.r)
+
+trigger:
+  batch: false
+  branches:
+    include:
+      - main
+      - master
+      - feature/*
+      - story/*
+      - bugfix/*
+  paths:
+    include:
+      - infra/*
+      - pipelines/infra/*
+      - azure-pipelines-wowpick-infra.yml
+
+# azure git repos, pr triggers can be only configured at branch policies build triggers, you can see it in the below link
+# https://dev.azure.com/wowonline/ECF/_settings/repositories?repo=96a77e04-5756-4e41-b880-eedda8437008&_a=policiesMid&refs=refs/heads/master
+# It has this path condition: /infra/*; /pipelines/infra/*; /azure-pipelines-wowpick-infra.yml
+
+pool: wlx-ubuntu1804
+
+variables:
+  shouldTriggerDeployment: ${{ eq(variables['Build.SourceBranchName'], 'master') }} # true #
+  #shouldTriggerDeployment: ${{ or(eq(variables['Build.SourceBranchName'], 'master'), startsWith(variables['Build.SourceBranchName'], 'release/')) }}
+  appName: wowpick
+  artifact: terraform-resources
+  terraformVersion: 0.15.0
+
+stages:
+  - stage: Validate
+    displayName: Validate Terraform
+    variables:
+      - name: templatePath
+        value: ./infra/terraform
+    jobs:
+      - job: Validate
+        steps:
+          - checkout: self
+            submodules: true
+            path: source
+
+          - publish: $(System.DefaultWorkingDirectory)/infra/terraform
+            displayName: Publish infrastructure artifact
+            artifact: $(artifact)
+
+          - task: TerraformInstaller@0
+            displayName: Install terraform
+            inputs:
+              terraformVersion: $(terraformVersion)
+
+          - task: TerraformCLI@0
+            displayName: Initialize terraform
+            inputs:
+              command: 'init'
+              workingDirectory: $(templatePath)
+              commandOptions: '-backend=false'
+
+          - task: TerraformCLI@0
+            displayName: Validate terraform
+            inputs:
+              command: 'validate'
+              workingDirectory: $(templatePath)
+
+  - template: ./pipelines/infra/plan-stage.yaml
+    parameters:
+      envName: 'dev0'
+      region: 'aas'
+      appName: $(appName)
+      artifact: $(artifact)
+      terraformVersion: $(terraformVersion)
+      dependsOn:
+        - Validate
+
+  - template: ./pipelines/infra/plan-stage.yaml
+    parameters:
+      envName: 'uat'
+      region: 'aae'
+      appName: $(appName)
+      artifact: $(artifact)
+      terraformVersion: $(terraformVersion)
+      dependsOn:
+        - Validate
+
+  - template: ./pipelines/infra/plan-stage.yaml
+    parameters:
+      envName: 'uat'
+      region: 'aas'
+      appName: $(appName)
+      artifact: $(artifact)
+      terraformVersion: $(terraformVersion)
+      dependsOn:
+        - Validate
+
+  - ${{ if eq(variables.shouldTriggerDeployment, true) }}:
+      - template: ./pipelines/infra/apply-stage.yaml
+        parameters:
+          envName: 'dev'
+          region: 'aas'
+          appName: $(appName)
+          artifact: $(artifact)
+          terraformVersion: $(terraformVersion)
+          dependsOn:
+            - Plan_dev_aas
+
+      - template: ./pipelines/infra/apply-stage.yaml
+        parameters:
+          envName: 'uat'
+          region: 'aae'
+          appName: $(appName)
+          artifact: $(artifact)
+          terraformVersion: $(terraformVersion)
+          dependsOn:
+            - Plan_uat_aae
+            - Apply_dev_aas
+
+      - template: ./pipelines/infra/apply-stage.yaml
+        parameters:
+          envName: 'uat'
+          region: 'aas'
+          appName: $(appName)
+          artifact: $(artifact)
+          terraformVersion: $(terraformVersion)
+          dependsOn:
+            - Plan_uat_aas
+            - Apply_dev_aas

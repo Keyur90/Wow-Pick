@@ -1,0 +1,1 @@
+export { IdentifierLabelPopup } from './IdentifierLabelPopup';

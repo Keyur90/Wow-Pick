@@ -1,0 +1,64 @@
+{
+  "id": "40447834",
+  "branchNo": 1474,
+  "isNewTrolley": true,
+  "pickingDone": false,
+  "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+  "trolleyType": "express",
+  "trolleyStatus": 1,
+  "goalTime": 338,
+  "elapsedTime": 10,
+  "bonusTime": 100,
+  "isBulk": false,
+  "totes": [
+    {
+      "id": "1",
+      "orderNo": "140031698",
+      "position": 1,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031698002"
+    }
+  ],
+  "orders": [
+    {
+      "id": "140031698",
+      "packagingType": "ONLINE BAG",
+      "deliveryMethod": "DELIVERY",
+      "locationCode": 5,
+      "deliveryDate": "2021-03-18T16:00:00",
+      "transitCode": "ABC001",
+      "customerName": "John Doe"
+    }
+  ],
+  "toteItems": [
+    {
+      "id": "586822001",
+      "toteId": "1",
+      "itemIndex": 0,
+      "orderNo": "140031698",
+      "articleId": "586822",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "orderedQuantity": 1,
+      "currentPage": 1,
+      "totalPages": 1,
+
+      "price": 4.0,
+      "secondaryArticleId": "124577",
+      "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+      "suppliedDetails": []
+    }
+  ],
+  "collectibles": [],
+  "freeSamples": [
+    {
+      "id": "123456",
+      "description": "Welcome Pack Sampling 2 *While Stocks Last",
+      "suppliedQuantity": 0,
+      "orderNo": "140031698",
+      "toteId": "1"
+    }
+  ]
+}

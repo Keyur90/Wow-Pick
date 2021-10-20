@@ -1,0 +1,13 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import MicroFrontend from './MicroFrontend';
+
+const basename = process.env.NODE_ENV === 'development' ? '' : '/';
+
+const App = () => (
+  <Router basename={basename}>
+    <h1>Welcome to <%= projectName %>!</h1>
+    <Route path="/">{/* <MicroFrontend name="TYPE_MFE_NAME" /> */}</Route>
+  </Router>
+);
+
+export default App;

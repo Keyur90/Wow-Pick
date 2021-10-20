@@ -1,0 +1,17 @@
+{
+  "data": {
+    "printToteLabels": {
+      "labels": [
+        {
+          "id": "209690729",
+          "orderNo": "889931505",
+          "position": 1,
+          "pickingZoneId": 0,
+          "barcode": "889931505001",
+          "__typename": "ToteLabel"
+        }
+      ],
+      "__typename": "PrintToteLabels"
+    }
+  }
+}

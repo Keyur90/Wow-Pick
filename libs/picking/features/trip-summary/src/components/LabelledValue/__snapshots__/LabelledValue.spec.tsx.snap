@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders LabelledValue 1`] = `
+<div>
+  <span>
+    <span
+      class="makeStyles-label-1"
+    >
+      Label
+      :
+    </span>
+    <span
+      class="makeStyles-value-2"
+    >
+      Value
+    </span>
+  </span>
+</div>
+`;

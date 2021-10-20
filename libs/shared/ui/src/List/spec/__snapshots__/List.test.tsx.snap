@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Container 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="MuiContainer-root makeStyles-root-3 MuiContainer-maxWidthLg"
+    >
+      <ul
+        class="makeStyles-list-2"
+      >
+        <li>
+          List item 1
+        </li>
+        <li>
+          List item 2
+        </li>
+        <li>
+          List item 3
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

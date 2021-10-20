@@ -1,0 +1,107 @@
+name: $(date:yyyy.MM.dd)$(rev:.r)
+
+trigger:
+  batch: false
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - apps/picking-api/*
+      - libs/picking/data/api-contracts/*
+      - pipelines/api/*
+      - azure-pipelines-wowpick-api.yml
+      - yarn.lock
+
+# azure git repos, pr triggers can be only configured at branch policies build triggers, you can see it in the below link, 'API Pipeline'
+# https://dev.azure.com/wowonline/ECF/_settings/repositories?repo=96a77e04-5756-4e41-b880-eedda8437008&_a=policiesMid&refs=refs/heads/master
+# It has this path condition: /apps/picking-api/*; /libs/picking/data/api-contracts/*; /pipelines/api/*; /azure-pipelines-wowpick-api.yml; /yarn.lock
+
+pool: wlx-ubuntu1804
+
+variables:
+  shouldTriggerDeployment: ${{ eq(variables['Build.SourceBranchName'], 'master') }} # true #
+  #shouldTriggerDeployment: ${{ or(eq(variables['Build.SourceBranchName'], 'master'), startsWith(variables['Build.SourceBranchName'], 'release/')) }}
+  nodeVersion: 14.x
+  appName: 'wowpick-graphql'
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Platform Engineering/vsts-build-templates
+
+stages:
+  - stage: BuildAndTest
+    displayName: Build and Test
+    jobs:
+      - job: BuildAndTest
+        displayName: Build and Test
+        steps:
+          - task: NodeTool@0
+            displayName: Install Node ${{ variables.nodeVersion }}
+            inputs:
+              versionSpec: ${{ variables.nodeVersion }}
+              checkLatest: true
+          - task: Cache@2
+            inputs:
+              key: npm-packages | $(Agent.OS) | yarn.lock
+              path: node_modules
+              cacheHitVar: nodeModulesRestored
+            displayName: Restore NPM Packages
+          - script: yarn install --frozen-lockfile
+            displayName: Install NPM Packages
+            condition: eq(variables.nodeModulesRestored, 'false')
+          - script: yarn ci:api-build
+            displayName: Build
+          - script: yarn ci:api-lint
+            displayName: Test (Lint)
+          - script: yarn ci:api-test
+            displayName: Test (Unit Test)
+          - template: docker/publish-docker.yaml@templates
+            parameters:
+              azureSubscriptionEndpoint: WOWDEVTEST-ECF
+              imageName: $(appName)
+              buildContext: dist/apps/picking-api
+              dockerFile: apps/picking-api/Dockerfile
+              appspecFile: apps/picking-api/appspec.yaml
+              scanEnabled: false
+              pushCondition: and(succeeded(), eq(variables.shouldTriggerDeployment, true))
+          - template: deploy/generate-k8s-artifacts.yaml@templates
+          - script: rm -r node_modules/.cache
+            displayName: Remove Temp Cache
+
+  - ${{ if eq(variables.shouldTriggerDeployment, true) }}:
+      - template: ./pipelines/api/deploy-to-aks.yaml
+        parameters:
+          environment: dev
+          region: aae
+          dependsOn: BuildAndTest
+          appInsightApp: appinsight-rf-dev0-k8s-aas
+          appInsightResourceGroup: wow-dev-ecf-domain-aas
+
+      # - template: ./pipelines/api/deploy-to-aks.yaml
+      #   parameters:
+      #     environment: uat
+      #     region: aae
+      #     dependsOn: Deploy_DEV_AAE
+      #     appInsightApp: appinsight-rf-uat-k8s-aae
+      #     appInsightResourceGroup: wow-uat-ecf-domain-aae
+
+  # - template: ./pipelines/api/deploy-to-aks.yaml
+  #   parameters:
+  #     environment: uat
+  #     region: aas
+  #     dependsOn: Deploy_DEV_AAE
+
+  # - template: ./pipelines/api/deploy-to-aks.yaml
+  #   parameters:
+  #     environment: prod
+  #     region: aae
+  #     dependsOn: Deploy_DEV_AAE
+
+  # - template: ./pipelines/api/deploy-to-aks.yaml
+  #   parameters:
+  #     environment: prod
+  #     region: aas
+  #     dependsOn: Deploy_DEV_AAE

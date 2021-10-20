@@ -1,0 +1,41 @@
+// To see full babel options see these two files
+// 1- https://github.com/nrwl/nx/blob/master/packages/web/babel.ts
+// 2- https://github.com/nrwl/nx/blob/master/packages/react/babel.ts
+
+{
+  "presets": [
+    "@nrwl/react/babel"
+    <% if (style === '@emotion/styled') { %>,"@emotion/babel-preset-css-prop"<% } %>
+  ],
+  "plugins": [
+    <% if (style === 'styled-components') { %>["styled-components", { "pure": true, "ssr": true }]<% } %>
+    <% if (style === 'styled-jsx') { %>"styled-jsx/babel"<% } %>
+  ],
+  "overrides": [
+    {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "debug": false, // Enable debug to see how browserslist affects used plugins and polyfills
+            "useBuiltIns": "usage",
+            "corejs": "3.10", // Do not transform modules to CJS
+            "modules": false,
+            "bugfixes": true,
+            "exclude": ["transform-typeof-symbol"] // Exclude transforms that make all code slower
+          }
+        ],
+        [
+          "@babel/preset-react",
+          {
+            "useBuiltIns": true,
+
+            // Allow both classic react and the new react 17 jsx transform, so we don't need to import React
+            // See this for more details https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+            "runtime": "automatic" //
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+export { BarcodeSupply } from './BarcodeSupply';

@@ -1,0 +1,467 @@
+{
+  "data": {
+    "getNextTrip": {
+      "id": "40447834",
+      "branchNo": 1759,
+      "isNewTrolley": true,
+      "pickingDone": false,
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "isExpress": false,
+      "trolleyType": "normal",
+      "trolleyStatus": 1,
+      "goalTime": 338,
+      "elapsedTime": 119,
+      "bonusTime": 10,
+      "isBulk": false,
+      "totes": [
+        {
+          "id": "1",
+          "orderNo": "140031688",
+          "position": 1,
+          "pickingZoneId": 3,
+          "pickingZoneName": "Ambient",
+          "barcode": "140031688002",
+          "__typename": "Tote"
+        },
+        {
+          "id": "2",
+          "orderNo": "140031689",
+          "position": 2,
+          "pickingZoneId": 3,
+          "pickingZoneName": "Ambient",
+          "barcode": "140031688002",
+          "__typename": "Tote"
+        },
+        {
+          "id": "3",
+          "orderNo": "1400316",
+          "position": 3,
+          "pickingZoneId": 5,
+          "pickingZoneName": "Fresh",
+          "barcode": "140031688002",
+          "__typename": "Tote"
+        },
+        {
+          "id": "4",
+          "orderNo": "140031681",
+          "position": 4,
+          "pickingZoneId": 4,
+          "pickingZoneName": "Security",
+          "barcode": "140031688003",
+          "__typename": "Tote"
+        }
+      ],
+      "orders": [
+        {
+          "id": "140031681",
+          "packagingType": "NO BAGS",
+          "orderPrice": 199.99,
+          "deliveryMethod": "COLLECT",
+          "locationCode": 5,
+          "deliveryDate": "2021-03-18T16:00:00",
+          "transitCode": "TRAN-CODE-2342364537457",
+          "customerName": "Cusotmer nameasd asd",
+          "__typename": "Order"
+        },
+        {
+          "id": "140031689",
+          "packagingType": "PAPER BAG",
+          "orderPrice": 199.99,
+          "deliveryMethod": "DELIVERY",
+          "locationCode": 3,
+          "deliveryDate": "2021-07-20T16:00:00",
+          "transitCode": "TRAN-CODE-2342364537457",
+          "customerName": "Cusotmer nameasd asd",
+          "__typename": "Order"
+        },
+        {
+          "id": "1400316",
+          "packagingType": "NO BAGS",
+          "orderPrice": 199.99,
+          "deliveryMethod": "DELIVERY",
+          "locationCode": null,
+          "deliveryDate": "2021-06-10T16:00:00",
+          "transitCode": "TRAN-CODE-2342364537457",
+          "customerName": "Cusotmer nameasd asd",
+          "__typename": "Order"
+        },
+        {
+          "id": "140031688",
+          "packagingType": "ONLINE BAG",
+          "orderPrice": 199.99,
+          "deliveryMethod": "COLLECT",
+          "locationCode": 5,
+          "deliveryDate": "2021-03-18T16:00:00",
+          "transitCode": "TRAN-CODE-2342364537457",
+          "customerName": "Cusotmer nameasd asd",
+          "__typename": "Order"
+        }
+      ],
+      "toteItems": [
+        {
+          "id": "28391",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "toteId": "1",
+          "itemIndex": 0,
+          "orderNo": "140031681",
+          "articleId": "28391",
+          "secondaryArticleId": "124577",
+          "aisle": "9",
+          "bay": "56",
+          "shelf": "2",
+          "orderedQuantity": 3,
+          "currentPage": 5,
+          "totalPages": 20,
+          "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+          "stockOnHand": 0,
+          "article": {
+            "description": "Woolworths Pumpkin Cubes 480g",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/28391.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "EACH",
+            "brand": "Woolworths",
+            "genericName": "Pumpkin Cubes",
+            "variety": null,
+            "volumeSize": "480g",
+            "preferredShelfLife": 5,
+            "minShelfLife": 2,
+            "isPerishable": true,
+            "productRecall": null,
+            "productWithdrawal": null,
+            "wontScanKg": true,
+            "wontScanEach": true,
+            "wscanQuantityLimit": 222,
+            "weightPrimaryTolerance": 10,
+            "weightSecondaryTolerance": 20,
+            "weightOverride": true,
+            "useWeightRange": null,
+            "minWeight": null,
+            "maxWeight": null,
+            "eachMultiplier": null,
+            "barcodes": [
+              {
+                "barcode": "9339687094745",
+                "barcodeType": "ZA",
+                "isPrimary": true
+              }
+            ],
+            "__typename": "Article"
+          },
+          "suppliedDetails": [],
+          "__typename": "ToteItem"
+        },
+        {
+          "id": "100261",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "toteId": "2",
+          "itemIndex": 0,
+          "orderNo": "140031688",
+          "articleId": "100261",
+          "secondaryArticleId": "124577",
+          "aisle": "2",
+          "bay": "2",
+          "shelf": "2",
+          "orderedQuantity": 30,
+          "currentPage": 1,
+          "totalPages": 2,
+
+          "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+          "stockOnHand": 0,
+          "article": {
+            "description": "Beef Silverside Virginian Roast PER KG",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/100261.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "KG",
+            "brand": "Beef Silverside Virginian",
+            "genericName": "Roast",
+            "variety": null,
+            "volumeSize": "PER KG",
+            "preferredShelfLife": 5,
+            "minShelfLife": 2,
+            "isPerishable": false,
+            "productRecall": null,
+            "productWithdrawal": null,
+            "wontScanKg": true,
+            "wontScanEach": true,
+            "wscanQuantityLimit": 222,
+            "weightPrimaryTolerance": 10,
+            "weightSecondaryTolerance": 20,
+            "weightOverride": true,
+            "useWeightRange": null,
+            "minWeight": null,
+            "maxWeight": null,
+            "eachMultiplier": null,
+            "barcodes": [
+              {
+                "barcode": "9339687094745",
+                "barcodeType": "ZA",
+                "isPrimary": true
+              }
+            ],
+            "__typename": "Article"
+          },
+          "suppliedDetails": [],
+          "__typename": "ToteItem"
+        },
+        {
+          "id": "443314",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "toteId": "2",
+          "itemIndex": 1,
+          "orderNo": "140031689",
+          "articleId": "443314",
+          "secondaryArticleId": "124577",
+          "aisle": "9",
+          "bay": "56",
+          "shelf": "2",
+          "orderedQuantity": 5,
+          "currentPage": 10,
+          "totalPages": 20,
+
+          "personalShopperNotes": "Please only make a substitution if you really have too. As this is my favourite product.",
+          "stockOnHand": 8,
+          "article": {
+            "description": "Woolworths SIMPLY STIR FRY VEGETABLE 250G",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/443314.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "EACH",
+            "brand": "Woolworths",
+            "genericName": "SIMPLY STIR FRY VEGETABLE",
+            "variety": "SUPERFOODS",
+            "volumeSize": "250G",
+            "preferredShelfLife": null,
+            "minShelfLife": 10,
+            "isPerishable": true,
+            "productRecall": null,
+            "productWithdrawal": null,
+            "wontScanKg": true,
+            "wontScanEach": true,
+            "wscanQuantityLimit": 222,
+            "weightPrimaryTolerance": null,
+            "weightSecondaryTolerance": null,
+            "weightOverride": null,
+            "useWeightRange": null,
+            "minWeight": null,
+            "maxWeight": null,
+            "eachMultiplier": null,
+            "barcodes": [
+              {
+                "barcode": "9339687094745",
+                "barcodeType": "ZA",
+                "isPrimary": true
+              }
+            ],
+            "__typename": "Article"
+          },
+          "suppliedDetails": [],
+          "__typename": "ToteItem"
+        },
+        {
+          "id": "283911",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "toteId": "3",
+          "itemIndex": 0,
+          "orderNo": "1400316",
+          "articleId": "28391",
+          "secondaryArticleId": null,
+          "aisle": "2",
+          "bay": "2",
+          "shelf": "2",
+          "orderedQuantity": 30,
+          "currentPage": 1,
+          "totalPages": 2,
+
+          "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+          "stockOnHand": 0,
+          "article": {
+            "description": "Woolworths Pumpkin Cubes 480g",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/28391.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "EACH",
+            "brand": "Woolworths",
+            "genericName": "Pumpkin Cubes",
+            "variety": null,
+            "volumeSize": "480g",
+            "preferredShelfLife": 5,
+            "minShelfLife": 2,
+            "isPerishable": true,
+            "productRecall": null,
+            "productWithdrawal": null,
+            "wontScanKg": true,
+            "wontScanEach": true,
+            "wscanQuantityLimit": 222,
+            "weightPrimaryTolerance": null,
+            "weightSecondaryTolerance": null,
+            "weightOverride": null,
+            "useWeightRange": null,
+            "minWeight": null,
+            "maxWeight": null,
+            "eachMultiplier": null,
+            "barcodes": [
+              {
+                "barcode": "9339687094745",
+                "barcodeType": "ZA",
+                "isPrimary": true
+              }
+            ],
+            "__typename": "Article"
+          },
+          "suppliedDetails": [],
+          "__typename": "ToteItem"
+        },
+        {
+          "id": "561890",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "toteId": "4",
+          "itemIndex": 0,
+          "orderNo": "140031681",
+          "articleId": "561890",
+          "secondaryArticleId": "124577",
+          "aisle": "9",
+          "bay": "56",
+          "shelf": "2",
+          "orderedQuantity": 3,
+          "currentPage": 5,
+          "totalPages": 20,
+
+          "personalShopperNotes": "Please only make a substitution if you really have too. As these are the best pumpkin cubes I've ever had.",
+          "stockOnHand": -48,
+          "article": {
+            "description": "Woolworths LIGHTLY SPARKLING 20 PACK",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/561890.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "EACH",
+            "brand": "Woolworths",
+            "genericName": "LIGHTLY SPARKLING",
+            "variety": "SPRING WATER",
+            "volumeSize": "20 PACK",
+            "preferredShelfLife": 5,
+            "minShelfLife": 2,
+            "isPerishable": false,
+            "productRecall": null,
+            "productWithdrawal": null,
+            "wontScanKg": true,
+            "wontScanEach": true,
+            "wscanQuantityLimit": 222,
+            "weightPrimaryTolerance": null,
+            "weightSecondaryTolerance": null,
+            "weightOverride": null,
+            "useWeightRange": null,
+            "minWeight": null,
+            "maxWeight": null,
+            "eachMultiplier": null,
+            "barcodes": [
+              {
+                "barcode": "9339687094745",
+                "barcodeType": "ZA",
+                "isPrimary": true
+              }
+            ],
+            "__typename": "Article"
+          },
+          "suppliedDetails": [
+            {
+              "type": "Primary",
+              "articleId": "561890",
+              "scanDetails": [
+                {
+                  "storePrice": null,
+                  "barcode": "",
+                  "suppliedPrice": 0,
+                  "quantity": 6,
+                  "weight": null,
+                  "batchNo": "",
+                  "expiryDate": "",
+                  "dataBar": "",
+                  "__typename": "ScanDetail"
+                }
+              ],
+              "__typename": "SuppliedDetail"
+            }
+          ],
+          "__typename": "ToteItem"
+        }
+      ],
+      "collectibles": [
+        {
+          "id": "561890",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "itemIndex": 1,
+          "orderNo": "140031681",
+          "articleId": "561890",
+          "toteId": "1",
+          "orderedQuantity": 12,
+          "stockOnHand": 20,
+          "article": {
+            "description": "Woolworths LIGHTLY SPARKLING 20 PACK",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/561890.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "EACH",
+            "brand": "Woolworths",
+            "genericName": "LIGHTLY SPARKLING",
+            "variety": "SPRING WATER",
+            "volumeSize": "20 PACK",
+            "preferredShelfLife": 5,
+            "minShelfLife": 2,
+            "isPerishable": false,
+            "__typename": "Article"
+          },
+          "suppliedQuantity": 0,
+          "__typename": "Collectible"
+        },
+        {
+          "id": "443314",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "itemIndex": 1,
+          "orderNo": "140031681",
+          "articleId": "443314",
+          "toteId": "4",
+          "orderedQuantity": 2,
+          "stockOnHand": 8,
+          "article": {
+            "description": "Woolworths SIMPLY STIR FRY VEGETABLE 250G",
+            "imageUrl": "https://uat-assets.woolworths.com.au/images/1005/443314.jpg?impolicy=wowtofzcfpg&w=250&h=250",
+            "unitPrice": null,
+            "pricingUnit": "EACH",
+            "brand": "Woolworths",
+            "genericName": "SIMPLY STIR FRY VEGETABLE",
+            "variety": "SUPERFOODS",
+            "volumeSize": "250G",
+            "preferredShelfLife": null,
+            "minShelfLife": 10,
+            "isPerishable": true,
+            "useWeightRange": null,
+            "minWeight": null,
+            "maxWeight": null,
+            "__typename": "Article"
+          },
+          "suppliedQuantity": 0,
+          "__typename": "Collectible"
+        }
+      ],
+      "freeSamples": [
+        {
+          "id": "123456",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "description": "Welcome Pack Sampling 2 *While Stocks Last",
+          "suppliedQuantity": 0,
+          "toteId": "1",
+          "orderNo": "140031681",
+
+          "__typename": "FreeSample"
+        },
+        {
+          "id": "123457",
+          "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+          "description": "Welcome Pack ",
+          "suppliedQuantity": 0,
+          "toteId": "4",
+          "orderNo": "140031681",
+
+          "__typename": "FreeSample"
+        }
+      ],
+      "__typename": "GetNextTrip"
+    }
+  }
+}

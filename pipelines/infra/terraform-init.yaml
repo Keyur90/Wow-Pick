@@ -1,0 +1,41 @@
+parameters:
+  - name: envName
+    type: string
+  - name: region
+    type: string
+  - name: artifact
+    type: string
+  - name: appName
+    type: string
+
+steps:
+  - task: TerraformCLI@0
+    displayName: Terraform init
+    inputs:
+      command: init
+      commandOptions: -reconfigure
+      workingDirectory: $(Agent.BuildDirectory)/${{ parameters.artifact }}
+      backendType: azurerm
+      ${{ if eq(contains(parameters.envName, 'dev' ), 'True') }}:
+        backendServiceArm: WOWDEVTEST-ECF
+        backendAzureRmResourceGroupName: wow-dev-terraform-tfstate
+        backendAzureRmStorageAccountName: terraformstatedevtest
+        backendAzureRmResourceGroupLocation: 'australiaeast'
+      ${{ if eq(parameters.envName, 'uat') }}:
+        backendServiceArm: WOWUAT-ECF
+        backendAzureRmResourceGroupName: wow-uat-terraform-tfstate
+        backendAzureRmStorageAccountName: terraformstateuat
+        backendAzureRmResourceGroupLocation: 'australiasoutheast'
+      ${{ if in(parameters.envName, 'pt') }}:
+        backendServiceArm: WOWUAT-ECF
+        backendAzureRmResourceGroupName: wow-uat-terraform-tfstate
+        backendAzureRmStorageAccountName: terraformstatept
+        backendAzureRmResourceGroupLocation: 'australiasoutheast'
+      ${{ if eq(parameters.envName, 'prod') }}:
+        backendServiceArm: WOWPROD-ECF
+        backendAzureRmResourceGroupName: wow-prod-terraform-tfstate
+        backendAzureRmStorageAccountName: terraformstateprod
+        backendAzureRmResourceGroupLocation: 'australiaeast'
+      backendAzureRmContainerName: ${{ parameters.appName }}-${{ parameters.envName }}-${{ parameters.region }}
+      backendAzureRmKey: ${{ parameters.appName }}-${{ parameters.envName }}-${{ parameters.region }}.tfstate
+      ensureBackend: true

@@ -1,0 +1,160 @@
+[
+  {
+    "articleId": "28391",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "useWeightRange": false,
+    "minWeight": 0.4,
+    "maxWeight": 0.5,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true,
+    "preferredShelfLife": 10,
+    "minShelfLife": 5
+  },
+  {
+    "articleId": "586822",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "useWeightRange": true,
+    "minWeight": 2,
+    "maxWeight": 3,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true,
+    "minShelfLife": 5,
+    "eans": [
+      {
+        "barcode": "9310015243714",
+        "barcodeType": "ZF"
+      },
+      {
+        "barcode": "258682000003",
+        "barcodeType": "PEB"
+      }
+    ],
+    "unitPrice": 20
+  },
+  {
+    "articleId": "829021",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "useWeightRange": true,
+    "minWeight": 2,
+    "maxWeight": 3,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": false,
+    "minShelfLife": 5
+  },
+  {
+    "articleId": "100261",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222
+  },
+  {
+    "articleId": "561890",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "productRecall": false,
+    "useWeightRange": false,
+    "eans": [
+      {
+        "barcode": "256189000007",
+        "barcodeType": "PEB"
+      }
+    ],
+    "unitPrice": 20
+  },
+  {
+    "articleId": "425786",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222
+  },
+  {
+    "articleId": "443314",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222
+  },
+  {
+    "articleId": "443314",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222
+  },
+  {
+    "articleId": "0",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true,
+    "eans": [
+      {
+        "barcode": "9339687094745",
+        "barcodeType": "ZA"
+      }
+    ]
+  },
+  {
+    "articleId": "777944",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true,
+    "preferredShelfLife": 10,
+    "minShelfLife": 5
+  },
+  {
+    "articleId": "456358",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true,
+    "preferredShelfLife": 5,
+    "minShelfLife": 3
+  },
+  {
+    "articleId": "14645",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "wscanQuantityLimit": 222,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": false
+  },
+  {
+    "articleId": "329808",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "useWeightRange": false,
+    "minWeight": 2,
+    "maxWeight": 3,
+    "wscanQuantityLimit": 222,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true
+  },
+  {
+    "articleId": "321141",
+    "wontScanKg": true,
+    "wontScanEach": true,
+    "useWeightRange": true,
+    "wscanQuantityLimit": 222,
+    "weightPrimaryTolerance": 10,
+    "weightSecondaryTolerance": 20,
+    "weightOverride": true
+  }
+]

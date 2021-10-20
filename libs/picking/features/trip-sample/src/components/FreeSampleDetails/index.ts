@@ -1,0 +1,1 @@
+export { FreeSampleDetails } from './FreeSampleDetails';

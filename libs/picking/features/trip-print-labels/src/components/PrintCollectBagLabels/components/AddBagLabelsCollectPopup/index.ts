@@ -1,0 +1,1 @@
+export { AddBagLabelsCollectPopup } from './AddBagLabelsCollectPopup';

@@ -1,0 +1,1 @@
+export { PrintedToteLabelConfirmationPopup } from './PrintedToteLabelConfirmationPopup';

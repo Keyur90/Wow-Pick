@@ -1,0 +1,1 @@
+export { PersonalShopperNotesDialog } from './PersonalShopperNotesDialog';

@@ -1,0 +1,49 @@
+import ReactDOM, { unmountComponentAtNode } from 'react-dom';
+import { App } from './app/<%= fileName %>';
+import { createMemoryHistory, createBrowserHistory } from 'history';
+
+export let globalState = {};
+
+// Mount function to start up the app
+const mount = (el, { onNavigate, defaultHistory, initialPath, initialPathState, sharedGlobalState }) => {
+  const history = defaultHistory || createMemoryHistory();
+
+  globalState = sharedGlobalState;
+
+  // if (initialPath) history.push(initialPath, initialPathState);
+
+  history.push('/');
+
+  if (onNavigate) {
+    // ToDo: uncomment the below line if you need to update the parent router (the one in the shell)
+    // whenever routing happen in the micro frontend app
+
+    // history.listen(onNavigate);
+  }
+
+  ReactDOM.render(<App history={history} />, el);
+
+  return {
+    onParentNavigate({ pathname: nextPathname, state: newState }) {
+      // ToDo: uncomment the below lines if you need to update the micro frontend router
+      // whenever routing happen in the parent router (the one in the shell)
+
+      // const { pathname } = history.location;
+      // if (pathname !== nextPathname) {
+      //   history.push(nextPathname, newState);
+      // }
+    },
+  };
+};
+
+// If we are in development and in isolation then call mount immediately
+if (process.env.NODE_ENV === 'development') {
+  const devRoot = document.getElementById('<%= projectName %>-root');
+
+  if (devRoot) {
+    mount(devRoot, { defaultHistory: createBrowserHistory() });
+  }
+}
+
+// Export mount, and unmount to be expose our app as a micro frontend
+export { mount, unmountComponentAtNode as unmount };

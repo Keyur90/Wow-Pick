@@ -1,0 +1,8 @@
+import { proxy } from 'valtio';
+
+const globalState = proxy({
+  // Add any state you need to share across the micro frontend apps
+  // For example logged in user info
+});
+
+export default globalState;

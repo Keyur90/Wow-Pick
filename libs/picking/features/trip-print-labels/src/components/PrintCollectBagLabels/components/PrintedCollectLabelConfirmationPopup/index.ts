@@ -1,0 +1,1 @@
+export { PrintedCollectLabelConfirmationPopup } from './PrintedCollectLabelConfirmationPopup';

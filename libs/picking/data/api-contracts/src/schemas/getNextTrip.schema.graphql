@@ -1,0 +1,356 @@
+type Tote {
+  id: String
+  orderNo: String
+  position: Int
+  pickingZoneId: Int
+  pickingZoneName: String
+  barcode: String
+}
+
+type ToteLabel {
+  id: String!
+  orderNo: String
+  position: Int!
+  deliveryMethod: String!
+  pickingZoneId: Int!
+  barcode: String!
+  isNoBags: Boolean
+  isFlatFee: Boolean
+}
+
+type DeliveryLabel {
+  id: String!
+  orderNo: String
+  position: Int!
+  pickingZoneId: Int!
+  pickingZoneName: String!
+  barcode: String!
+}
+
+type CollectLabel {
+  id: String!
+  orderNo: String
+  position: Int!
+  pickingZoneId: Int!
+  barcode: String!
+}
+
+type Order {
+  id: String
+  shortCode: String
+  orderPrice: Float
+  personalShopperNotes: String
+  deliveryDate: String
+  locationCode: Int
+  transitCode: String
+  customerName: String
+  packagingType: String
+  deliveryMethod: String
+  isFlatFee: Boolean
+}
+
+type Article {
+  id: String
+  brand: String
+  genericName: String
+  variety: String
+  description: String
+  volumeSize: String
+  eachMultiplier: Float
+  useWeightRange: Boolean
+  minWeight: Float
+  maxWeight: Float
+  minShelfLife: Int
+  isPerishable: Boolean
+  preferredShelfLife: Int
+  weightPrimaryTolerance: Float
+  weightSecondaryTolerance: Float
+  weightOverride: Boolean
+  unitPrice: Float
+  pricingUnit: String
+  imageUrl: String
+  wontScanKg: Boolean
+  wontScanEach: Boolean
+  wscanQuantityLimit: Int
+  productRecall: Boolean
+  productWithdrawal: Boolean
+  barcodes: [EAN]
+}
+
+type EAN {
+  barcode: String
+  barcodeType: String
+  isPrimary: Boolean
+}
+
+type ToteItem {
+  id: String
+  lastUpdatedUtcTimeTicks: String
+  toteId: String
+  itemIndex: Int
+  orderNo: String
+  articleId: String
+  secondaryArticleId: String
+  orderedQuantity: Float
+  silentSubbed: Boolean
+  isSubstitutable: Boolean
+  isSubstituted: Boolean
+  aisle: String
+  bay: String
+  shelf: String
+  currentPage: Int
+  totalPages: Int
+  stockOnHand: Float
+  article: Article
+  price: Float
+  personalShopperNotes: String
+  suppliedDetails: [SuppliedDetail]
+  totalSuppliedQuantity: Float
+}
+
+type Collectible {
+  id: String
+  lastUpdatedUtcTimeTicks: String
+  itemIndex: Int
+  orderNo: String
+  articleId: String
+  secondaryArticleId: String # ToDo: This field not used and should be removed
+  article: Article
+  toteId: String
+  orderedQuantity: Int
+  stockOnHand: Float
+  suppliedQuantity: Int
+  totalSuppliedQuantity: Int # Client Side Only Field
+}
+
+type FreeSample {
+  id: String
+  lastUpdatedUtcTimeTicks: String
+  description: String
+  suppliedQuantity: Float # ToDo: Remove suppliedQuantity form UI and just rely on isSupplied
+  isSupplied: Boolean
+  toteId: String
+  orderNo: String
+}
+
+type GetNextTrip {
+  id: String
+  branchNo: Int
+  isNewTrolley: Boolean
+  pickingDone: Boolean
+  lastUpdatedUtcTimeTicks: String
+  isExpress: Boolean
+  trolleyType: String
+  trolleyStatus: Int
+  goalTime: Int
+  elapsedTime: Int
+  bonusTime: Int
+  isBulk: Boolean
+  orders: [Order]
+  totes: [Tote]
+  toteItems: [ToteItem]
+  collectibles: [Collectible]
+  freeSamples: [FreeSample]
+}
+
+type PrinterPool {
+  id: String!
+  name: String!
+}
+
+type PrintersPoolList {
+  printerPools: [PrinterPool]!
+}
+
+type Query {
+  getNextTrip(userName: String!, branchNo: String!, trolleyType: String): GetNextTrip
+  getPrintersPoolList(branchNo: String!): PrintersPoolList
+}
+
+type SuppliedDetail {
+  type: String
+  articleId: String
+  scanDetails: [ScanDetail]
+}
+
+input SuppliedDetailInput {
+  type: String
+  articleId: String
+  scanDetails: [ScanDetailInput]
+}
+
+type ScanDetail {
+  storePrice: Float
+  barcode: String
+  suppliedPrice: Float
+  quantity: Float
+  weight: Float
+  batchNo: String
+  expiryDate: String
+  dataBar: String
+}
+
+input ScanDetailInput {
+  storePrice: Float
+  barcode: String
+  suppliedPrice: Float
+  quantity: Float
+  weight: Float
+  batchNo: String
+  expiryDate: String
+  dataBar: String
+  placedInToteId: String
+}
+
+input SuppliedToteItemInput {
+  userName: String
+  branchNo: String
+  trolleyId: String
+  id: String
+  suppliedDetails: [SuppliedDetailInput]
+  lastUpdatedUtcTimeTicks: String
+}
+
+input SuppliedCollectibleInput {
+  userName: String
+  branchNo: String
+  trolleyId: String
+  id: String
+  suppliedQuantity: Int
+  lastUpdatedUtcTimeTicks: String
+}
+
+input MoveToteItemInput {
+  userName: String!
+  branchNo: String!
+  toteItemId: String!
+  originalToteId: String!
+  newToteId: String!
+}
+
+input SuppliedFreeSampleInput {
+  userName: String
+  branchNo: String
+  trolleyId: String
+  isSupplied: Boolean
+  id: String
+  lastUpdatedUtcTimeTicks: String
+}
+
+input PrintToteLabelsInput {
+  userName: String!
+  branchNo: String!
+  printerPoolId: String!
+}
+
+input AddExtraTotesInput {
+  userName: String!
+  branchNo: String!
+  trolleyId: String
+  orderNo: String
+  pickingZoneId: Int
+  pickingZoneName: String
+  count: Int
+  printerPoolId: String
+  currentToteIds: [String]
+}
+
+enum TrolleyStatus {
+  PACK
+  COMPLETE
+}
+
+input UpdateTrolleyStatusInput {
+  userName: String
+  branchNo: String
+  id: String
+  lastUpdatedUtcTimeTicks: String
+  elapsedTime: Int
+  trolleyStatus: TrolleyStatus
+}
+
+input PrintDeliveryBagLabelsInput {
+  userName: String!
+  branchNo: String!
+  orderNo: String
+  pickingZoneId: Int!
+  pickingZoneName: String!
+  barcode: String!
+  labelCount: Int!
+  printerId: String!
+}
+
+input ElapsedTimeInput {
+  trolleyId: String!
+  elapsedTime: Int!
+}
+
+input PrintCollectBagLabelsInput {
+  userName: String!
+  branchNo: String!
+  orderNo: String
+  position: Int!
+  labelCount: Int!
+  barcode: String!
+  printerId: String!
+}
+
+type UpdateStatus {
+  success: Boolean
+  error: [String]
+  id: String
+  lastUpdatedUtcTimeTicks: String
+}
+
+type PrintToteLabels {
+  labels: [ToteLabel]
+  error: String
+}
+
+type AddExtraTotes {
+  success: Boolean
+  error: [String]
+  id: String
+  lastUpdatedUtcTimeTicks: String
+  totes: [Tote]
+}
+
+type PrintDeliveryBagLabels {
+  labels: [DeliveryLabel]
+}
+
+type PrintCollectBagLabels {
+  labels: [CollectLabel]
+}
+
+enum OrderDispatchStatus {
+  ORDERALREADYDISPATCHED
+  ORDERCANCELLED
+  ORDERNOTFOUND
+}
+
+enum TrolleyType {
+  normal
+  express
+}
+
+type OrderDispatchResponse {
+  success: Boolean
+  status: OrderDispatchStatus
+}
+
+type Mutation {
+  supplyToteItem(suppliedToteItemInput: [SuppliedToteItemInput]): [UpdateStatus]
+  moveToteItem(moveToteItemInput: MoveToteItemInput): UpdateStatus
+  supplyCollectibles(suppliedCollectibleInput: [SuppliedCollectibleInput]): [UpdateStatus]
+  supplyFreeSamples(suppliedFreeSampleInput: [SuppliedFreeSampleInput]): [UpdateStatus]
+  resetCacheItem(userName: String!, branchNo: String!): UpdateStatus
+  resetAll: UpdateStatus
+  printToteLabels(printToteLabelsInput: PrintToteLabelsInput): PrintToteLabels
+  addExtraTotes(addExtraTotesInput: AddExtraTotesInput): AddExtraTotes
+  printDeliveryBagLabels(printDeliveryBagLabelsInput: PrintDeliveryBagLabelsInput): PrintDeliveryBagLabels
+  updateElapsedTime(elapsedTimeInput: ElapsedTimeInput): UpdateStatus
+  printCollectBagLabels(printCollectBagLabelsInput: PrintCollectBagLabelsInput): PrintCollectBagLabels
+  dispatchOrder(orderNo: String!): OrderDispatchResponse
+  updateTrolleyStatus(updateTrolleyStatusInput: UpdateTrolleyStatusInput): UpdateStatus
+}

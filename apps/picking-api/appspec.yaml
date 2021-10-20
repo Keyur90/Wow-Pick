@@ -1,0 +1,43 @@
+name: wowpick-api
+type: web
+
+#alerts:
+#slackChannel: '#platform-eng-alerts'
+
+replicaCount: 1
+
+healthCheck:
+  enabled: true
+  path: /.well-known/apollo/server-health
+  initialDelaySeconds: 15
+  periodSeconds: 15
+
+resources:
+  requests:
+    cpu: '1'
+    memory: 1G
+  limits:
+    cpu: '2'
+    memory: 2G
+
+ingress:
+  enabled: true
+  path: /wowpick-api
+
+environment:
+  - name: PORT
+    value: 80
+  - name: envName
+    value: "{{envName}}"
+  - name: APPLICATIONINSIGHTS_CONNECTION_STRING  
+    value: "{{appInsightsConnectionString}}"
+
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+    - name: cpu
+      value: 60
+
+monitor:
+  appmetrics: disabled # We don't have prometheus metrics endpoint, use Dynatrace + application insights instead

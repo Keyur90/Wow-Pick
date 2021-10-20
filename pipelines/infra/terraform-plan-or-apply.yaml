@@ -1,0 +1,35 @@
+parameters:
+  - name: action #plan or apply
+    type: string
+  - name: artifact
+    type: string
+  - name: region
+    type: string
+  - name: appName
+    type: string
+  - name: envName
+    type: string
+  - name: commandOptions
+    type: string
+    default: ''
+
+steps:
+  - task: TerraformCLI@0
+    displayName: 'Terraform ${{ parameters.action }}'
+    inputs:
+      command: ${{ parameters.action }}
+      workingDirectory: $(Agent.BuildDirectory)/${{ parameters.artifact }}
+      ${{ if eq(contains(parameters.envName, 'dev' ), 'True') }}:
+        environmentServiceName: WOWDEVTEST-ECF
+      ${{ if eq(parameters.envName, 'uat') }}:
+        environmentServiceName: WOWUAT-ECF
+      ${{ if eq(parameters.envName, 'pt') }}:
+        environmentServiceName: WOWUAT-ECF
+      ${{ if eq(parameters.envName, 'prod') }}:
+        environmentServiceName: WOWPROD-ECF
+      ${{ if eq(parameters.action, 'plan') }}:
+        publishPlanResults: 'Plan For ${{ parameters.envName }}-${{ parameters.region }}'
+      ${{ if eq(contains(parameters.envName, 'dev' ), 'True') }}:
+        commandOptions: '${{ parameters.commandOptions }} -var-file="${{ parameters.envName }}.tfvars" -var "REGION=${{ parameters.region }}" -var "RESOURCE_GROUP_NAME=wlx-dev-${{ parameters.appName }}-${{ parameters.region }}"'
+      ${{ if ne(contains(parameters.envName, 'dev' ), 'True') }}:
+        commandOptions: '${{ parameters.commandOptions }} -var-file="${{ parameters.envName }}.tfvars" -var "REGION=${{ parameters.region }}" -var "RESOURCE_GROUP_NAME=wlx-${{ parameters.envName }}-${{ parameters.appName }}-${{ parameters.region }}"'

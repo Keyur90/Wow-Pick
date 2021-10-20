@@ -1,0 +1,1 @@
+export { ArticleExceedsPrimaryTolerancePopup } from './ArticleExceedsPrimaryTolerancePopup';

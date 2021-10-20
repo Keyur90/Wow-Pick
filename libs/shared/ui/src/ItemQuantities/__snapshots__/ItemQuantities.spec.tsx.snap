@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render ItemQuantities should render with a KG pricing unit 1`] = `
+<div>
+  <div
+    class="makeStyles-root-14 makeStyles-root-16"
+  >
+    <div
+      class="makeStyles-root-17"
+    >
+      <div
+        class="makeStyles-label-18 makeStyles-label-20"
+      >
+        ORD (KG)
+      </div>
+      <div
+        class="makeStyles-value-19"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-17"
+    >
+      <div
+        class="makeStyles-label-18 makeStyles-label-21"
+      >
+        SUP
+      </div>
+      <div
+        class="makeStyles-value-19"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-17"
+    >
+      <div
+        class="makeStyles-label-18 makeStyles-label-22"
+      >
+        SOH
+      </div>
+      <div
+        class="makeStyles-value-19"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-17"
+    >
+      <div
+        class="makeStyles-label-18 makeStyles-label-23"
+      >
+        TOTE
+      </div>
+      <div
+        class="makeStyles-value-19"
+      >
+        <div
+          class="makeStyles-toteStatus-15"
+        >
+          1
+          <span
+            class="makeStyles-root-25 makeStyles-root-26"
+          >
+            <span
+              class="MuiTypography-root makeStyles-statusText-24 MuiTypography-body1 MuiTypography-noWrap"
+            >
+              Plastic
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render ItemQuantities should render with an each pricing unit 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1 makeStyles-root-3"
+  >
+    <div
+      class="makeStyles-root-4"
+    >
+      <div
+        class="makeStyles-label-5 makeStyles-label-7"
+      >
+        ORD (KG)
+      </div>
+      <div
+        class="makeStyles-value-6"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-4"
+    >
+      <div
+        class="makeStyles-label-5 makeStyles-label-8"
+      >
+        SUP
+      </div>
+      <div
+        class="makeStyles-value-6"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-4"
+    >
+      <div
+        class="makeStyles-label-5 makeStyles-label-9"
+      >
+        SOH
+      </div>
+      <div
+        class="makeStyles-value-6"
+      >
+        3
+      </div>
+    </div>
+    <div
+      class="makeStyles-root-4"
+    >
+      <div
+        class="makeStyles-label-5 makeStyles-label-10"
+      >
+        TOTE
+      </div>
+      <div
+        class="makeStyles-value-6"
+      >
+        <div
+          class="makeStyles-toteStatus-2"
+        >
+          1
+          <span
+            class="makeStyles-root-12 makeStyles-root-13"
+          >
+            <span
+              class="MuiTypography-root makeStyles-statusText-11 MuiTypography-body1 MuiTypography-noWrap"
+            >
+              Plastic
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,23 @@
+/// Snippets
+// - Visit Get Next Trip Page: cy.visit('http://localhost:4001/');
+// - Find a button with text Start trip and click on it:
+// cy.contains('Start trip').click();
+// cy.contains('Start trip').click();
+// cy.contains(/More Options/).click();
+// cy.contains(/^FWD$/).click();
+// cy.contains('button', 'FWD').click();
+
+// - Button that has no text should have area-label (for accessibility screen readers purposes):
+// cy.get('[aria-label="manual scan"]').click();
+
+// - Type inside textboxes/text-areas, remember to clear before type
+// cy.get('[name="user-name"]').clear().type('James')
+
+// // Input that has no name but has close label, get label first and from there reach the input element
+// cy.contains('Enter the supplied quantity').parent().find('input').clear().type(quantity);
+
+// - Assert certain text will be visible
+// cy.contains('Woolworths simply stir fry vegetable superfoods 250g').should('be.visible');
+// cy.contains('10/20').should('be.visible');
+// cy.contains('30-Jul').should('be.visible'); // Expiry date
+// cy.contains(/^ORD$/).next().contains(5).should('be.visible'); // Find ORD label and then find it's sibling (next dom element)

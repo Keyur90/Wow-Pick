@@ -1,0 +1,55 @@
+az login # will be prompted to login using your z-account
+
+az account list -o table # show all the accounts you have access to
+az account show # show the default account from the ones you have access to
+az account set --subscription WOWDEVTEST # set the default account to wowdevtest
+az account set --subscription WOWUAT # set the default account to wowuat
+
+# -o tsv, use this when ouput single value that has type string as default ouput format is json and json adds doulbe quoutes around strings output and we need just the value witout qoutes
+
+# ----------------------------
+# -- container images
+#-----------------------------
+# wow azure container registry: 
+# https://portal.azure.com/#@woolworthsgroup.com.au/resource/subscriptions/f5261f82-adb5-4a60-8bde-ca6690ba8737/resourceGroups/wow-dev-containers-shared-aae/providers/Microsoft.ContainerRegistry/registries/wowdevcontainers/repository
+
+# wowpick-graphql images repository: 
+# https://portal.azure.com/#blade/Microsoft_Azure_ContainerRegistries/TagMetadataBlade/id/%2Fsubscriptions%2Ff5261f82-adb5-4a60-8bde-ca6690ba8737%2FresourceGroups%2Fwow-dev-containers-shared-aae%2Fproviders%2FMicrosoft.ContainerRegistry%2Fregistries%2Fwowdevcontainers/repository/wowpick-graphql
+
+# list all wowpick-graphql images ordered by date, show image date, tag and size
+az acr repository show-manifests --name wowdevcontainers --repository wowpick-graphql --detail --query 'sort_by(@, &createdTime)[*].{date: createdTime, tag: tags[0], size: imageSize}' -o table
+
+# list all wowpick (old images) images ordered by date, show image date, tag and size
+az acr repository show-manifests --name wowdevcontainers --repository wowpick --detail --query 'sort_by(@, &createdTime)[*].{date: createdTime, tag: tags[0], size: imageSize}' -o table
+
+
+# ----------------------------
+# -- storage account
+#-----------------------------
+az storage account list --query "[?contains(name, 'wowpick')]" # show all storage accounts that has ecfnext in it's name
+az storage account show --name wowwowpickdev0stoaas --query primaryEndpoints.web -o tsv # show primary url for ecfnext ui dev env
+az storage account show --name wowpickinguatstoaae --query primaryEndpoints.web -o tsv # show primary url for ecfnext ui uat aae env
+
+
+# ----------------------------
+# -- storage account keys
+#-----------------------------
+az storage account keys list --account-name wowwowpickdev0stoaas --query "[0].value" -o tsv  # show primary key for dev aas storage account
+az storage account keys list --account-name wowpickinguatstoaas --query "[0].value" -o tsv  # show primary key for uat aae storage account
+
+
+# ----------------------------
+# -- resource gropus
+#-----------------------------
+az group list --subscription WOWDEVTEST --query "[?contains(name, 'wowpick')].name"
+az group list --subscription WOWUAT --query "[?contains(name, 'wowpick')].name"
+
+# ----------------------------
+# -- app insights
+#-----------------------------
+az monitor app-insights component show --query "[*].{name: name, rg: resourceGroup,  app: tags.Application}" -o table
+az monitor app-insights component show -a appinsight-rf-dev0-k8s-aas -g wow-dev-ecf-domain-aas --query "connectionString" -o tsv  # get connectionString => DEV0 AAS
+az monitor app-insights component show -a appinsight-ecfweb-prod-k8s-aas -g wow-prod-ecf-domain-aas --query "connectionString" -o tsv # get connectionString => PROD AAS
+az monitor app-insights component show -a appinsight-ecfweb-prod-k8s-aas -g wow-prod-ecf-domain-aas --query "connectionString" -o tsv # get connectionString string => PROD AAS
+az monitor app-insights component show -a appinsight-ecfweb-prod-k8s-aas -g wow-prod-ecf-domain-aas --query "connectionString" -o tsv # get connectionString => PROD AAS
+az monitor app-insights component show -a appinsight-ecfweb-prod-k8s-aas -g wow-prod-ecf-domain-aas --query "connectionString" -o tsv # get connectionString string => PROD AAS

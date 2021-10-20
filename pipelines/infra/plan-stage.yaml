@@ -1,0 +1,58 @@
+parameters:
+  - name: envName
+    type: string
+  - name: region
+    type: string
+  - name: appName
+    type: string
+  - name: artifact
+    type: string
+  - name: terraformVersion
+    type: string
+  - name: dependsOn
+    type: object
+    default: []
+
+stages:
+  - stage: Plan_${{ parameters.envName }}_${{ parameters.region}}
+    dependsOn: ${{ parameters.dependsOn }}
+    condition: succeeded()
+    jobs:
+      - job: Plan_${{ parameters.envName }}_${{ parameters.region}}
+        displayName: Plan ${{ parameters.envName }} ${{ parameters.region}}
+        steps:
+          - download: current
+            artifact: ${{ parameters.artifact }}
+
+          - task: TerraformInstaller@0
+            displayName: Install terraform
+            inputs:
+              terraformVersion: ${{ parameters.terraformVersion }}
+
+          - template: terraform-init.yaml
+            parameters:
+              envName: ${{ parameters.envName }}
+              region: ${{ parameters.region }}
+              appName: ${{ parameters.appName}}
+              artifact: ${{ parameters.artifact }}
+
+          #Run only when state blob gets locked with message 'Error message: state blob is already locked'
+          # - task: TerraformCLI@0
+          #   displayName: Unlock 1
+          #   inputs:
+          #     command: forceunlock
+          #     workingDirectory: $(Agent.BuildDirectory)/${{ parameters.artifact }}
+          #     lockID: '87738d16-2230-3bdd-523f-fd25914ce73a'
+
+          - bash: |
+              chmod -R 755 '$(Agent.BuildDirectory)/${{ parameters.artifact }}'
+            displayName: Fix file permissions
+
+          - template: terraform-plan-or-apply.yaml
+            parameters:
+              action: plan
+              envName: ${{ parameters.envName }}
+              region: ${{ parameters.region }}
+              appName: $(appName)
+              artifact: ${{ parameters.artifact }}
+              commandOptions: '-out $(Agent.BuildDirectory)/${{ parameters.artifact }}/terraform-plan-${{ parameters.envName }}-${{ parameters.region }}.plan'

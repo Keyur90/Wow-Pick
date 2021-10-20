@@ -1,0 +1,31 @@
+{
+  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parserOptions": {
+        /**
+         * In order to ensure maximum efficiency when typescript-eslint generates TypeScript Programs
+         * behind the scenes during lint runs, we need to make sure the project is configured to use its
+         * own specific tsconfigs, and not fall back to the ones in the root of the workspace.
+         */
+        "project": ["apps/shell/tsconfig.*?.json"]
+      },
+      "rules": {
+        // Turn off this rule to allow both classic react and the new react 17 jsx transform, so we don't need to import React
+        // See this for more details https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "streetsidesoftware.code-spell-checker",
+    "nrwl.angular-console",
+    "firsttris.vscode-jest-runner",
+    "alexkrechik.cucumberautocomplete"
+  ]
+}

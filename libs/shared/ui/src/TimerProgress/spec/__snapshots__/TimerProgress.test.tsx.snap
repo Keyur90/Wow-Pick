@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TimerProgress 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="makeStyles-labelWrapper-2"
+    >
+      <div
+        class="MuiTypography-root makeStyles-labelPrimary-3 makeStyles-labelPrimary-8 MuiTypography-caption"
+      >
+        4/10
+      </div>
+      <div
+        class="MuiTypography-root makeStyles-labelSecondary-4 makeStyles-labelSecondary-9 MuiTypography-caption"
+      >
+        Left
+      </div>
+    </div>
+    <div
+      aria-valuenow="100"
+      class="MuiCircularProgress-root makeStyles-bottom-6 makeStyles-bottom-11 MuiCircularProgress-colorPrimary MuiCircularProgress-determinate"
+      role="progressbar"
+      style="width: 48px; height: 48px; transform: rotate(-90deg);"
+    >
+      <svg
+        class="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.5"
+          stroke-width="3"
+          style="stroke-dasharray: 128.805; stroke-dashoffset: 0.000px;"
+        />
+      </svg>
+    </div>
+    <div
+      aria-valuenow="0"
+      class="MuiCircularProgress-root makeStyles-top-5 makeStyles-top-10 MuiCircularProgress-colorPrimary MuiCircularProgress-determinate"
+      role="progressbar"
+      style="width: 48px; height: 48px; transform: rotate(-90deg);"
+    >
+      <svg
+        class="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.5"
+          stroke-width="3"
+          style="stroke-dasharray: 128.805; stroke-dashoffset: 128.805px;"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

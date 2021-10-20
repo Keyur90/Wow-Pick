@@ -1,0 +1,20 @@
+type PEBConfig {
+  id: Int!
+  description: String
+  prefixStart: String
+  prefixEnd: String
+  barcodeLength: Int
+  priceOffset: Int
+  priceLength: Int
+  priceDecimals: Int
+  qtyOffset: Int
+  qtyLength: Int
+  qtyDecimals: Int
+  itemLength: Int
+  itemOffset: Int
+  checkDigitOffset: Int
+}
+
+type Query {
+  getPEBConfigs(allConfigs: String!): [PEBConfig]
+}

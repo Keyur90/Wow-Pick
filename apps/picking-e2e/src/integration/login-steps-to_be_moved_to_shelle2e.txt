@@ -1,0 +1,79 @@
+import { Given, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { interceptRest } from '../../utils/interceptRest';
+import LoginPage from '../../support/pageObjects/LoginPage';
+import MenuPage from '../../support/pageObjects/MenuPage';
+
+const loginPage = new LoginPage();
+const menuPage = new MenuPage();
+
+Given('I am on login page', function () {
+  cy.visit(Cypress.env('dev0'));
+});
+
+Given('I successfully login to RF application', function () {
+  const baseURL = Cypress.env('dev0');
+
+  interceptRest(cy, {
+    appInsightTrack: {
+      method: 'POST',
+      url: `/track`,
+      stub: { body: {} },
+    },
+    getStores: {
+      method: 'GET',
+      url: `${baseURL}store/Stores`,
+      stub: { fixture: 'storesList' },
+    },
+    getStore: {
+      method: 'GET',
+      url: `${baseURL}store/${this.user.store}/aks-url`,
+      stub: {
+        body: {
+          Success: true,
+          ErrorCode: null,
+          ErrorMessage: null,
+          Data: '',
+          ErrorType: 0,
+          CheckCode: null,
+        },
+      },
+    },
+    UserLogin: {
+      method: 'GET',
+      url: `${baseURL}store/${this.user.store}/${this.user.user_name}`,
+      stub: { fixture: 'usersList' },
+    },
+  });
+
+  cy.login(this.user.store, this.user.user_name, this.user.password);
+});
+
+And('I enter the store_no and user_name', function () {
+  loginPage.ensureLoaded();
+  loginPage.storeNoTxt().type(this.user.store);
+  loginPage.userNameTxt().type(this.user.user_name);
+});
+
+And('I click on Login button', function () {
+  loginPage.loginBtn().click();
+});
+
+And('I should able to see the error message and click OK', function () {
+  cy.get(loginPage.errorTxt().should('have.text', 'User already logged in, please enter password'));
+  loginPage.okButton().click();
+});
+
+And('I provided the password', function () {
+  loginPage.passwordTxt().type(this.user.password);
+  loginPage.loginBtn().click();
+});
+
+Then('I should be able to login to verify Next Trolley trip text', function () {
+  menuPage.ensureLoaded();
+  menuPage.nextTrolleyTripGoBtn().should('exist');
+});
+
+And('visit Next Trolley trip', function () {
+  menuPage.ensureLoaded();
+  menuPage.nextTrolleyTripGoBtn().click();
+});

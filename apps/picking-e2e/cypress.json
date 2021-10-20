@@ -1,0 +1,22 @@
+{
+  "fileServerFolder": ".",
+  "fixturesFolder": "./src/fixtures",
+  "integrationFolder": "./src/integration",
+  "modifyObstructiveCode": false,
+  "pluginsFile": "./src/plugins/index.ts",
+  "supportFile": "./src/support/index.ts",
+  "defaultCommandTimeout": 5000,
+  "video": false,
+  "chromeWebSecurity": false,
+  "experimentalSourceRewriting": false,
+  "videosFolder": "../../dist/cypress/apps/picking-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/picking-e2e/screenshots",
+  "env": {
+    "dev0": "https://rfweb-dev0.ecfk8saas.dev.wx-d.net/wowpick/shell",
+    "gqlUrl": "https://ofk8saae.dev.wx-d.net/wowpick-api/graphql"
+  },
+  "testFiles": "**/*.feature",
+  "experimentalStudio": true,
+  "viewportHeight": 641,
+  "viewportWidth": 360
+}

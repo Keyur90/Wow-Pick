@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ProductCard 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiCardContent-root makeStyles-root-1"
+    >
+      <div
+        class="makeStyles-content-2"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+        >
+          Whittaker's Block Creamy Milk 33% Cocoa 250g
+        </h2>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-align-items-xs-center"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2"
+          >
+            751892
+          </p>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2"
+          >
+            <span>
+              $6.00
+            </span>
+          </p>
+        </div>
+        <div
+          class="MuiGrid-root makeStyles-pullRight-4 MuiGrid-item"
+        >
+          <button
+            aria-label="view image"
+            class="MuiButtonBase-root MuiIconButton-root makeStyles-imageButton-3 MuiIconButton-colorInherit MuiIconButton-sizeSmall"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,11 @@
+{
+  "nonGlobalStepDefinitions": false,
+  "stepDefinitions": "src/integration/step-definitions",
+  "cucumberJson": {
+    "generate": true,
+    "outputFolder": "../../dist/cypress/apps",
+    "filePrefix": "",
+    "fileSuffix": ".cucumber",
+    "overwrite": false
+  }
+}

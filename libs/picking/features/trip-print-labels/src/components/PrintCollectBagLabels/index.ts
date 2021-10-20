@@ -1,0 +1,1 @@
+export { PrintCollectBagLabels } from './PrintCollectBagLabels';

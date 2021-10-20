@@ -1,0 +1,646 @@
+{
+  "version": 2,
+  "cli": { "defaultCollection": "@nrwl/react" },
+  "defaultProject": "picking",
+  "generators": {
+    "@nrwl/react": {
+      "application": { "style": "css", "linter": "eslint", "babel": true },
+      "component": { "style": "css" },
+      "library": { "style": "css", "linter": "eslint" }
+    }
+  },
+  "projects": {
+    "picking": {
+      "root": "apps/picking",
+      "sourceRoot": "apps/picking/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "cwd": "apps/picking",
+            "command": "cross-env ENV_NAME={args.env-name} TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=production webpack --config webpack.prod.config.ts",
+            "outputPath": "dist/apps/wowpick/picking"
+          },
+          "configurations": {
+            "devaas": { "args": "--env-name=devaas" },
+            "uataae": { "args": "--env-name=uataae" },
+            "uataas": { "args": "--env-name=uataas" },
+            "ptaae": { "args": "--env-name=ptaae" },
+            "ptaas": { "args": "--env-name=ptaas" },
+            "prodaae": { "args": "--env-name=prodaae" },
+            "prodaas": { "args": "--env-name=prodaas" }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/picking",
+            "command": "cross-env ENV_NAME={args.env-name} TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack serve --config webpack.dev.config.ts"
+          },
+          "configurations": {
+            "devaas": { "args": "--env-name=devaas" },
+            "uataae": { "args": "--env-name=uataae" },
+            "uataas": { "args": "--env-name=uataas" },
+            "ptaae": { "args": "--env-name=ptaae" },
+            "ptaas": { "args": "--env-name=ptaas" },
+            "prodaae": { "args": "--env-name=prodaae" },
+            "prodaas": { "args": "--env-name=prodaas" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/picking/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/picking"],
+          "options": { "jestConfig": "apps/picking/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-e2e": {
+      "root": "apps/picking-e2e",
+      "sourceRoot": "apps/picking-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "start-server-and-test \"yarn build-then-serve-build picking 4001\" http://localhost:4001 \"yarn nx cypress-run picking-e2e\""
+          }
+        },
+        "e2e-open": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "start-server-and-test \"yarn build-then-serve-build picking 4001\" http://localhost:4001 \"yarn nx cypress-open picking-e2e\""
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/picking-e2e/**/*.{js,ts}"] }
+        },
+        "cypress-run": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/picking-e2e/cypress.json",
+            "tsConfig": "apps/picking-e2e/tsconfig.e2e.json",
+            "baseUrl": "http://localhost:4001",
+            "headless": true
+          }
+        },
+        "cypress-open": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/picking-e2e/cypress.json",
+            "tsConfig": "apps/picking-e2e/tsconfig.e2e.json",
+            "baseUrl": "http://localhost:4001",
+            "watch": true
+          }
+        }
+      }
+    },
+    "shell": {
+      "root": "apps/shell",
+      "sourceRoot": "apps/shell/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "cwd": "apps/shell",
+            "command": "cross-env ENV_NAME={args.env-name} TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=production webpack --config webpack.prod.config.ts",
+            "outputPath": "dist/apps/wowpick/shell"
+          },
+          "configurations": {
+            "devaas": { "args": "--env-name=devaas" },
+            "uataae": { "args": "--env-name=uataae" },
+            "uataas": { "args": "--env-name=uataas" },
+            "ptaae": { "args": "--env-name=ptaae" },
+            "ptaas": { "args": "--env-name=ptaas" },
+            "prodaae": { "args": "--env-name=prodaae" },
+            "prodaas": { "args": "--env-name=prodaas" }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/shell",
+            "command": "cross-env ENV_NAME={args.env-name} TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack serve --config webpack.dev.config.ts"
+          },
+          "configurations": {
+            "devaas": { "args": "--env-name=devaas" },
+            "uataae": { "args": "--env-name=uataae" },
+            "uataas": { "args": "--env-name=uataas" },
+            "ptaae": { "args": "--env-name=ptaae" },
+            "ptaas": { "args": "--env-name=ptaas" },
+            "prodaae": { "args": "--env-name=prodaae" },
+            "prodaas": { "args": "--env-name=prodaas" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/shell/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/shell"],
+          "options": { "jestConfig": "apps/shell/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "shell-e2e": {
+      "root": "apps/shell-e2e",
+      "sourceRoot": "apps/shell-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "start-server-and-test \"nx serve shell\" http://localhost:4000 \"nx run shell-e2e:cypress-run\""
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"] }
+        },
+        "cypress-run": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/shell-e2e/cypress.json",
+            "tsConfig": "apps/shell-e2e/tsconfig.e2e.json",
+            "baseUrl": "http://localhost:4000",
+            "headless": true
+          },
+          "configurations": { "production": { "devServerTarget": "shell:serve:production" } }
+        },
+        "cypress-open": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/shell-e2e/cypress.json",
+            "tsConfig": "apps/shell-e2e/tsconfig.e2e.json",
+            "baseUrl": "http://localhost:4000",
+            "watch": true
+          },
+          "configurations": { "production": { "devServerTarget": "shell:serve:production" } }
+        },
+        "e2e-open": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "start-server-and-test \"nx serve shell\" http://localhost:4000 \"nx run shell-e2e:cypress-open\""
+          }
+        }
+      }
+    },
+    "legacy": {
+      "root": "apps/legacy",
+      "sourceRoot": "apps/legacy/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "cwd": "apps/legacy",
+            "command": "cross-env ENV_NAME={args.env-name} TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=production webpack --config webpack.prod.config.ts",
+            "outputPath": "dist/apps/wowpick/legacy"
+          },
+          "configurations": {
+            "devaas": { "args": "--env-name=devaas" },
+            "uataae": { "args": "--env-name=uataae" },
+            "uataas": { "args": "--env-name=uataas" },
+            "ptaae": { "args": "--env-name=ptaae" },
+            "ptaas": { "args": "--env-name=ptaas" },
+            "prodaae": { "args": "--env-name=prodaae" },
+            "prodaas": { "args": "--env-name=prodaas" }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/legacy",
+            "command": "cross-env ENV_NAME={args.env-name} TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack serve --config webpack.dev.config.ts"
+          },
+          "configurations": {
+            "devaas": { "args": "--env-name=devaas" },
+            "uataae": { "args": "--env-name=uataae" },
+            "uataas": { "args": "--env-name=uataas" },
+            "ptaae": { "args": "--env-name=ptaae" },
+            "ptaas": { "args": "--env-name=ptaas" },
+            "prodaae": { "args": "--env-name=prodaae" },
+            "prodaas": { "args": "--env-name=prodaas" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/legacy/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/legacy"],
+          "options": { "jestConfig": "apps/legacy/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "shared-ui": {
+      "root": "libs/shared/ui",
+      "sourceRoot": "libs/shared/ui/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/shared/ui/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui"],
+          "options": { "jestConfig": "libs/shared/ui/jest.config.js", "passWithNoTests": true }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": { "configFolder": "libs/shared/ui/.storybook" }
+          },
+          "configurations": { "ci": { "quiet": true } }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/ui",
+            "config": { "configFolder": "libs/shared/ui/.storybook" }
+          },
+          "configurations": { "ci": { "quiet": true } }
+        }
+      }
+    },
+    "picking-api": {
+      "root": "apps/picking-api",
+      "sourceRoot": "apps/picking-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/picking-api",
+            "main": "apps/picking-api/src/main.ts",
+            "tsConfig": "apps/picking-api/tsconfig.app.json",
+            "assets": ["apps/picking-api/src/assets"],
+            "externalDependencies": "all"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "webpackConfig": "apps/picking-api/webpack.config.js",
+              "generatePackageJson": true
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": { "buildTarget": "picking-api:build", "inspect": true, "port": 9229 }
+        },
+        "lint": { "executor": "@nrwl/linter:eslint", "options": { "lintFilePatterns": ["apps/picking-api/**/*.ts"] } },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": { "commands": ["nx run picking-api:unit-test"], "parallel": false }
+        },
+        "unit-test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/picking-api/jest.config.js",
+            "passWithNoTests": true,
+            "codeCoverage": true,
+            "coverageDirectory": "dist/coverage/apps/picking-api/unit"
+          }
+        }
+      }
+    },
+    "picking-features-trip-summary": {
+      "root": "libs/picking/features/trip-summary",
+      "sourceRoot": "libs/picking/features/trip-summary/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-summary/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-summary"],
+          "options": { "jestConfig": "libs/picking/features/trip-summary/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-types": {
+      "root": "libs/picking/types",
+      "sourceRoot": "libs/picking/types/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/types/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/types"],
+          "options": { "jestConfig": "libs/picking/types/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-data-api-contracts": {
+      "root": "libs/picking/data/api-contracts",
+      "sourceRoot": "libs/picking/data/api-contracts/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/data/api-contracts/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/data/api-contracts"],
+          "options": { "jestConfig": "libs/picking/data/api-contracts/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-data-api": {
+      "root": "libs/picking/data/api",
+      "sourceRoot": "libs/picking/data/api/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/data/api/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/data/api"],
+          "options": { "jestConfig": "libs/picking/data/api/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-data-mocks": {
+      "root": "libs/picking/data/mocks",
+      "sourceRoot": "libs/picking/data/mocks/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/data/mocks/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/data/mocks"],
+          "options": { "jestConfig": "libs/picking/data/mocks/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "shared-global-state": {
+      "root": "libs/shared/global-state",
+      "sourceRoot": "libs/shared/global-state/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/shared/global-state/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/global-state"],
+          "options": { "jestConfig": "libs/shared/global-state/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "shared-utility": {
+      "root": "libs/shared/utility",
+      "sourceRoot": "libs/shared/utility/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/shared/utility/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/utility"],
+          "options": { "jestConfig": "libs/shared/utility/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "shared-feature-flags": {
+      "root": "libs/shared/feature-flags",
+      "sourceRoot": "libs/shared/feature-flags/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/shared/feature-flags/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/feature-flags"],
+          "options": { "jestConfig": "libs/shared/feature-flags/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-trip-item": {
+      "root": "libs/picking/features/trip-item",
+      "sourceRoot": "libs/picking/features/trip-item/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-item/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-item"],
+          "options": { "jestConfig": "libs/picking/features/trip-item/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "shared-icons": {
+      "root": "libs/shared/icons",
+      "sourceRoot": "libs/shared/icons/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/shared/icons/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/icons"],
+          "options": { "jestConfig": "libs/shared/icons/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-supply": {
+      "root": "libs/picking/features/supply",
+      "sourceRoot": "libs/picking/features/supply/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/supply/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/supply"],
+          "options": { "jestConfig": "libs/picking/features/supply/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-trip-collectible": {
+      "root": "libs/picking/features/trip-collectible",
+      "sourceRoot": "libs/picking/features/trip-collectible/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-collectible/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-collectible"],
+          "options": { "jestConfig": "libs/picking/features/trip-collectible/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-trip-sample": {
+      "root": "libs/picking/features/trip-sample",
+      "sourceRoot": "libs/picking/features/trip-sample/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-sample/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-sample"],
+          "options": { "jestConfig": "libs/picking/features/trip-sample/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-trip-picking-end-summary": {
+      "root": "libs/picking/features/trip-picking-end-summary",
+      "sourceRoot": "libs/picking/features/trip-picking-end-summary/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-picking-end-summary/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-picking-end-summary"],
+          "options": {
+            "jestConfig": "libs/picking/features/trip-picking-end-summary/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "picking-features-trip-packing-summary": {
+      "root": "libs/picking/features/trip-packing-summary",
+      "sourceRoot": "libs/picking/features/trip-packing-summary/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-packing-summary/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-packing-summary"],
+          "options": {
+            "jestConfig": "libs/picking/features/trip-packing-summary/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "picking-features-trip-print-labels": {
+      "root": "libs/picking/features/trip-print-labels",
+      "sourceRoot": "libs/picking/features/trip-print-labels/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/trip-print-labels/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/trip-print-labels"],
+          "options": { "jestConfig": "libs/picking/features/trip-print-labels/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-print-selection": {
+      "root": "libs/picking/features/print-selection",
+      "sourceRoot": "libs/picking/features/print-selection/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/print-selection/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/print-selection"],
+          "options": { "jestConfig": "libs/picking/features/print-selection/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-dispatch-order": {
+      "root": "libs/picking/features/dispatch-order",
+      "sourceRoot": "libs/picking/features/dispatch-order/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/dispatch-order/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/dispatch-order"],
+          "options": { "jestConfig": "libs/picking/features/dispatch-order/jest.config.js", "passWithNoTests": true }
+        }
+      }
+    },
+    "picking-features-zero-totes-to-pick": {
+      "root": "libs/picking/features/zero-totes-to-pick",
+      "sourceRoot": "libs/picking/features/zero-totes-to-pick/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/picking/features/zero-totes-to-pick/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/picking/features/zero-totes-to-pick"],
+          "options": {
+            "jestConfig": "libs/picking/features/zero-totes-to-pick/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  }
+}

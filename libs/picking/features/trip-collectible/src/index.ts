@@ -1,0 +1,1 @@
+export { TripCollectible } from './TripCollectible';

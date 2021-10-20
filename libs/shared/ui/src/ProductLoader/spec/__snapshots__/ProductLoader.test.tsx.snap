@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ProductLoader 1`] = `
+<div>
+  <span
+    class="MuiSkeleton-root MuiSkeleton-rect makeStyles-cardLoader-1 MuiSkeleton-pulse"
+    style="width: 100%; height: 166px;"
+  />
+  <span
+    class="MuiSkeleton-root MuiSkeleton-rect makeStyles-detailLoader-2 MuiSkeleton-pulse"
+    style="width: 100%; height: 54px;"
+  />
+</div>
+`;

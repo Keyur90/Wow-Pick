@@ -1,0 +1,35 @@
+{
+  "data": {
+    "CheckCode": "4460a2f4-3bfe-47fb-b53b-c5e65d4a53f7",
+    "Data": [
+      {
+        "Barcode": "48054344000",
+        "DeliveryMethod": null,
+        "IsFlatFee": false,
+        "IsNoBags": false,
+        "LabelId": 72413945,
+        "OrderNo": 48054344,
+        "PickingZoneId": 0,
+        "ShortOrderCode": null,
+        "TrayId": 0,
+        "TrayPosition": 1
+      },
+      {
+        "Barcode": "48054344000",
+        "DeliveryMethod": null,
+        "IsFlatFee": false,
+        "IsNoBags": false,
+        "LabelId": 72413946,
+        "OrderNo": 48054344,
+        "PickingZoneId": 0,
+        "ShortOrderCode": null,
+        "TrayId": 0,
+        "TrayPosition": 2
+      }
+    ],
+    "ErrorCode": null,
+    "ErrorMessage": null,
+    "ErrorType": 0,
+    "Success": true
+  }
+}

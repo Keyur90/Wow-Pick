@@ -1,0 +1,58 @@
+{
+  "id": "40447834",
+  "branchNo": 1474,
+  "isNewTrolley": true,
+  "pickingDone": false,
+  "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+  "trolleyType": "normal",
+  "trolleyStatus": 1,
+  "goalTime": 338,
+  "elapsedTime": 10,
+  "bonusTime": 100,
+  "isBulk": false,
+  "totes": [
+    {
+      "id": "4",
+      "orderNo": "140031688",
+      "position": 1,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031688002"
+    }
+  ],
+  "orders": [
+    {
+      "id": "140031688",
+      "packagingType": "ONLINE BAG",
+      "deliveryMethod": "COLLECT",
+      "locationCode": 5,
+      "deliveryDate": "2021-03-18T16:00:00",
+      "transitCode": null,
+      "customerName": "John Doe"
+    }
+  ],
+  "toteItems": [],
+  "collectibles": [
+    {
+      "id": "561890",
+      "itemIndex": 1,
+      "orderNo": "140031688",
+      "articleId": "561890",
+      "toteId": "4",
+      "orderedQuantity": 12,
+      "suppliedQuantity": 0,
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00"
+    },
+    {
+      "id": "443314",
+      "itemIndex": 1,
+      "orderNo": "140031688",
+      "articleId": "443314",
+      "toteId": "4",
+      "orderedQuantity": 2,
+
+      "suppliedQuantity": 0
+    }
+  ],
+  "freeSamples": []
+}

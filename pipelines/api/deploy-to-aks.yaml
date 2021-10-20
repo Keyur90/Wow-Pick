@@ -1,0 +1,56 @@
+parameters:
+  - name: environment
+    type: string
+  - name: region
+    type: string
+  - name: dependsOn
+    type: object
+  - name: cloudRoleName
+    type: string
+    default: 'wowpick-graphql'
+  - name: namespace
+    type: string
+    default: 'of'
+  - name: appInsightApp
+    type: string
+  - name: appInsightResourceGroup
+    type: string
+
+stages:
+  # this template can be found at: https://dev.azure.com/wowonline/Platform%20Engineering/_git/vsts-build-templates?path=%2Fdeploy%2Fdeploy-to-k8s.yaml&_a=contents&version=GBmaster
+  # Refer to it for more parameters and capabilities it can expose
+  - template: deploy/deploy-to-k8s.yaml@templates
+    parameters:
+      name: Deploy_${{ upper(parameters.environment) }}_${{ upper(parameters.region) }}
+      displayName: Deploy ${{ upper(parameters.environment) }} ${{ upper(parameters.region) }}
+      dependsOn: ${{ parameters.dependsOn }}
+      environment: ${{ parameters.environment }}
+      region: ${{ parameters.region }}
+      namespace: ${{ parameters.namespace}}
+      deployEnv: ${{ parameters.cloudRoleName }}
+      condition: succeeded()
+      preDeploy:
+        - task: AzureCLI@2
+          displayName: 'Set App Insight Connection String'
+          inputs:
+            ${{ if eq(contains(parameters.environment, 'dev' ), 'True') }}:
+              azureSubscription: WOWDEVTEST-ECF
+            ${{ if eq(parameters.environment, 'uat') }}:
+              azureSubscription: WOWUAT-ECF
+            ${{ if in(parameters.environment, 'pt') }}:
+              azureSubscription: WOWUAT-ECF
+            ${{ if eq(parameters.environment, 'prod') }}:
+              azureSubscription: WOWPROD-ECF
+            scriptType: bash
+            scriptLocation: inlineScript
+            inlineScript: |
+              az config set extension.use_dynamic_install=yes_without_prompt
+              echo "##vso[task.setvariable variable=appInsightsConnectionString]$(az monitor app-insights component show -a ${{ parameters.appInsightApp}} -g ${{ parameters.appInsightResourceGroup }} --query 'connectionString' -o tsv)"
+            failOnStandardError: false
+        - bash: |
+            echo '$(appInsightConnectionString)'
+          displayName: 'echo appInsightConnectionString'
+
+      env: # these will be 'pushed' into appspec.yaml file and used by kubernetes to deploy
+        appInsightsConnectionString: '$(appInsightsConnectionString)'
+        envName: ${{ parameters.environment }}

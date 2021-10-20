@@ -1,0 +1,1 @@
+export { TripItemHeader } from './TripItemHeader';

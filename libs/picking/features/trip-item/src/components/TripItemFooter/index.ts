@@ -1,0 +1,1 @@
+export { TripItemFooter } from './TripItemFooter';

@@ -1,0 +1,9 @@
+Feature: Login to RF Application
+
+ Scenario: Login with the existing user
+        Given I am on login page
+        And I enter the store_no and user_name
+        And I click on Login button 
+        And I should able to see the error message and click OK
+        And I provided the password
+        Then I should be able to login to verify Next Trolley trip text

@@ -1,0 +1,39 @@
+{
+  "implicitDependencies": { "package.json": { "dependencies": "*", "devDependencies": "*" }, ".eslintrc.json": "*" },
+  "affected": { "defaultBase": "master" },
+  "npmScope": "rf2",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e", "build-storybook"] }
+    }
+  },
+  "projects": {
+    "picking": { "tags": [] },
+    "picking-e2e": { "tags": [], "implicitDependencies": ["picking"] },
+    "shell": { "tags": ["scop:shared"] },
+    "shell-e2e": { "tags": [], "implicitDependencies": ["shell"] },
+    "legacy": { "tags": ["scop=legacy"] },
+    "shared-ui": { "tags": ["scope=picking"] },
+    "picking-api": { "tags": [] },
+    "picking-features-trip-summary": { "tags": [] },
+    "picking-types": { "tags": [] },
+    "picking-data-api-contracts": { "tags": [] },
+    "picking-data-api": { "tags": [] },
+    "picking-data-mocks": { "tags": [] },
+    "shared-global-state": { "tags": [] },
+    "shared-utility": { "tags": [] },
+    "shared-feature-flags": { "tags": [] },
+    "picking-features-trip-item": { "tags": [] },
+    "shared-icons": { "tags": [] },
+    "picking-features-supply": { "tags": [] },
+    "picking-features-trip-collectible": { "tags": [] },
+    "picking-features-trip-sample": { "tags": [] },
+    "picking-features-trip-picking-end-summary": { "tags": [] },
+    "picking-features-trip-packing-summary": { "tags": [] },
+    "picking-features-trip-print-labels": { "tags": [] },
+    "picking-features-print-selection": { "tags": [] },
+    "picking-features-dispatch-order": { "tags": [] },
+    "picking-features-zero-totes-to-pick": { "tags": [] }
+  }
+}

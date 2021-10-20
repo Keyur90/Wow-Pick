@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders BottomActions 1`] = `
+<body>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appBar-1 makeStyles-appBar-3 mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      class="MuiContainer-root makeStyles-root-4 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="makeStyles-content-2"
+      >
+        Some bottom actions
+      </div>
+    </div>
+  </header>
+</body>
+`;

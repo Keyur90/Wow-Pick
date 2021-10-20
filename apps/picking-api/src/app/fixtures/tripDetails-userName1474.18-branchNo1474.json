@@ -1,0 +1,108 @@
+{
+  "id": "40447834",
+  "branchNo": 1474,
+  "trolleyType": "normal",
+  "pickingDone": false,
+  "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+  "trolleyStatus": 1,
+  "goalTime": 338,
+  "elapsedTime": 10,
+  "bonusTime": 100,
+  "isBulk": true,
+  "totes": [
+    {
+      "id": 209571132,
+      "orderNo": "140031688",
+      "position": 1,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031688002"
+    },
+    {
+      "id": 209571133,
+      "orderNo": "140031688",
+      "position": 2,
+      "pickingZoneId": 3,
+      "pickingZoneName": "Ambient",
+      "barcode": "140031688003"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "packagingType": "ONLINE BAG",
+      "deliveryDate": "2021-03-18T16:00:00"
+    },
+    {
+      "id": "2",
+      "packagingType": "PAPER BAG",
+      "deliveryDate": "2021-03-18T16:00:00"
+    }
+  ],
+  "toteItems": [
+    {
+      "id": "28391",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "209571132",
+      "itemIndex": 0,
+      "articleId": "28391",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "suppliedQuantity": 1,
+      "orderedQuantity": 3,
+
+      "price": 4.0,
+      "suppliedDetails": [
+        {
+          "type": "Primary",
+          "articleId": "28391",
+          "scanDetails": [
+            {
+              "barcode": "",
+              "suppliedPrice": 0,
+              "quantity": 1,
+              "weight": null,
+              "batchNo": "",
+              "expiryDate": "",
+              "dataBar": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "443314",
+      "lastUpdatedUtcTimeTicks": "2021-03-18T16:00:00",
+      "toteId": "209571133",
+      "itemIndex": 1,
+      "articleId": "443314",
+      "aisle": "9",
+      "bay": "56",
+      "shelf": "2",
+      "suppliedQuantity": 2,
+      "orderedQuantity": 5,
+
+      "price": 3.5,
+      "suppliedDetails": [
+        {
+          "type": "Primary",
+          "articleId": "443314",
+          "scanDetails": [
+            {
+              "barcode": "",
+              "suppliedPrice": 0,
+              "quantity": 1,
+              "weight": null,
+              "batchNo": "",
+              "expiryDate": "",
+              "dataBar": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "collectibles": [],
+  "freeSamples": []
+}

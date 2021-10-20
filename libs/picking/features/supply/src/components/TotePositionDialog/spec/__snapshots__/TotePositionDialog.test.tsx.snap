@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TotePositionDialog component renders TotePositionDialog 1`] = `<body />`;
+
+exports[`TotePositionDialog component renders TotePositionDialog with express trolley 1`] = `<body />`;
